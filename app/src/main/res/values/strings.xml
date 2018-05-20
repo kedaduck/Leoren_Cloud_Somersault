@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Leoren_Cloud_Somersault</string>
+
+
+    <!--  注册登录时所用String  ===============================================================================-->
+
+    <string name="login_or_re_userinfo">手机号/邮箱/烈狐ID</string>
+    <string name="secret">密码</string>
+    <string name="login_text">登录</string>
+    <string name="register_text">注册</string>
+    <string name="forget_secret">忘记密码</string>
+    <string name="other_method_login">其他方式登录</string>
+    <string name="use_agree">使用即同意</string>
+    <string name="liehu_agreement">《烈狐用户协议》</string>
+    <string name="wrong_username">2—6位字符、只能为汉字、数字、英文字母(区分大小写)、“-”、“_”, 其他特殊字符不可以使用</string>
+    <string name="wrong_password">2—6位字符、只能为数字、英文字母(区分大小写)、“-”、“_”、“%”、“$”、其他特殊字符不可以使用</string>
+    <string name="wrong_phonenum">11位数字</string>
+    <string name="wrong_mail">错误的邮箱地址</string>
+    <string name="input_nickname">输入昵称：</string>
+    <string name="input_secret">输入密码：</string>
+    <string name="repeat_secret">重复密码：</string>
+    <string name="password_notmatch">两次密码不匹配</string>
+    <string name="input_phonenum">手机号：</string>
+    <string name="input_mail">邮箱地址：</string>
+    <string name="countinue_register">完成注册</string>
+    <string name="here_input_telnum">在此输入手机号</string>
+    <string name="get_phone_confirm_code">获取验证码</string>
+    <string name="here_input_confirm_code">在此输入验证码</string>
+
+    <!-- ====================================================================================================  -->
+
+
+    <!-- 布局信息所用String ====================================================================================-->
+
+
+    <string name="margin_left_right">8dp</string>
+    <string name="margin_top">20dp</string>
+    <string name="textSize20">20sp</string>
+    <string name="margintop10">10dp</string>
+
+
+    <!-- ======================================================================================================-->
+
+
+</resources>
