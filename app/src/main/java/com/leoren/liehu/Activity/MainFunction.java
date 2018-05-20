@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import com.leoren.liehu.R;
 
-public class register_tel extends AppCompatActivity {
+public class MainFunction extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_tel);
+        setContentView(R.layout.activity_main_function);
     }
 }

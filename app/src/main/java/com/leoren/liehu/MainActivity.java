@@ -1,11 +1,8 @@
 package com.leoren.liehu;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,26 +12,20 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.leoren.liehu.Activity.PersonActivity;
+import com.leoren.liehu.Activity.Register;
 import com.leoren.liehu.Content.LiehuAgreeMent;
 import com.leoren.liehu.ImpContent.QQImpContent;
-import com.leoren.liehu.ResultInformation.QQResultInformation;
 import com.leoren.liehu.util.JsonParse;
 import com.tencent.connect.UserInfo;
-import com.tencent.connect.auth.QQToken;
-import com.tencent.connect.common.BaseApi;
 import com.tencent.connect.common.Constants;
-import com.tencent.tauth.AuthActivity;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static com.leoren.liehu.R.drawable.login_secret_focused_icon;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener ,View.OnFocusChangeListener{
 
@@ -162,7 +153,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 该app自己注册
      */
     private void normal_register(){
-
+        Intent intent = new Intent(this, Register.class);
+        startActivity(intent);
     }
 
     /**
