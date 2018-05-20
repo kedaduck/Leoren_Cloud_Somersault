@@ -21,9 +21,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity" />
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -51,6 +49,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.FoodActivity" />
+        <activity android:name=".Activity.ExeciseActivity" />
+        <activity android:name=".Activity.FriendsActivity" />
+        <activity android:name=".Activity.HappyActivity"></activity>
     </application>
 
 </manifest>

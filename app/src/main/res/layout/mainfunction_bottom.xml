@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="55dp"
+    android:background="#e4e4e4">
+
+    <LinearLayout
+        android:id="@+id/tab_food"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/tab_food_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/food_icon"/>
+
+        <TextView
+            android:id="@+id/tab_food_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/food"
+            android:textSize="13sp"
+            android:textColor="@color/mainFunctionTab_unSelect"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_execise"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/tab_execise_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/execise_icon"/>
+
+        <TextView
+            android:id="@+id/tab_execise_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/execise"
+            android:textSize="13sp"
+            android:textColor="@color/mainFunctionTab_unSelect"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_friends"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/tab_friends_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/friends_icon"/>
+
+        <TextView
+            android:id="@+id/tab_friends_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/friends"
+            android:textSize="13sp"
+            android:textColor="@color/mainFunctionTab_unSelect"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tab_happy"
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/tab_happy_img"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/happy_icon"/>
+
+        <TextView
+            android:id="@+id/tab_happy_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/happy"
+            android:textSize="13sp"
+            android:textColor="@color/mainFunctionTab_unSelect"/>
+
+    </LinearLayout>
+
+</LinearLayout>

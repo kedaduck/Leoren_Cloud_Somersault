@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/happy_scanCode"
+        android:title="@string/scanOf_scan"
+        android:icon="@drawable/scan_icon"/>
+
+    <item
+        android:id="@+id/happy_view_down"
+        android:title="@string/mydownload"
+        android:icon="@drawable/download_icon"/>
+
+</menu>
