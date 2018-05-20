@@ -2,23 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.FoodActivity">
+    tools:context=".Activity.FoodView.DinnerActicity">
 
-    <include layout="@layout/foodview_head"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/food_viewpager"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="12">
-
-    </android.support.v4.view.ViewPager>
-
-
-
-    
+        android:layout_height="match_parent"
+        android:text="This is DinnerActivity"/>
 
 </LinearLayout>

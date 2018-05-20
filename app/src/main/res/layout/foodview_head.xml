@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="#DCDCDC">
+
+        <TextView
+            android:id="@+id/food_myBody_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/mybody"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/food_myPlan_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/myplan"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/food_breakfast_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/breakfast"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/food_lunch_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/lunch"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/food_dinner_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/dinner"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/cursorarea"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#CDCDCD"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/cursor_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

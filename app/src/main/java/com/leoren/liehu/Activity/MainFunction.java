@@ -3,6 +3,8 @@ package com.leoren.liehu.Activity;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -38,15 +40,16 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
 
     //定义tab左拉右滑的一些工具和容器
     private ViewPager viewPager;
-    private List<View> views = new ArrayList<View>();
+    private List<View> views = new ArrayList<>();
     private PageAdapter adapter = new PageAdapter(views);
 
+    /**
     //四个主功能 tab
-    private LinearLayout maintab_food;
-    private LinearLayout maintab_execise;
-    private LinearLayout maintab_friends;
-    private LinearLayout maintab_happy;
-
+    private FragmentActivity foodActivity;
+    private FragmentActivity execiseActivity;
+    private FragmentActivity friendsActivity;
+    private FragmentActivity happyActivity;
+*/
     //主功能页面底部的四个按钮  由他们的点击实现页面滑动
     private ImageView foodImg;
     private ImageView execiseImg;
@@ -139,10 +142,7 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
         viewPager = findViewById(R.id.maintab_view);
 
         //四个功能tab
-        maintab_food = findViewById(R.id.tab_food);
-        maintab_execise = findViewById(R.id.tab_execise);
-        maintab_friends = findViewById(R.id.tab_friends);
-        maintab_happy = findViewById(R.id.tab_happy);
+
 
         //主功能区底部的四个按钮
         foodImg = findViewById(R.id.tab_food_img);
@@ -159,11 +159,12 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
         foodImg.setImageResource(R.drawable.food_seleced_icon);
         foodText.setTextColor(Color.rgb(26, 250, 29));
 
+
         LayoutInflater inflater = LayoutInflater.from(this);
-        View view1 = inflater.inflate(R.layout.maintab_food, null);
-        View view2 = inflater.inflate(R.layout.maintab_execise, null);
-        View view3 = inflater.inflate(R.layout.maintab_friends, null);
-        View view4 = inflater.inflate(R.layout.maintab_happy, null);
+        View view1 = inflater.inflate(R.layout.activity_food, null);
+        View view2 = inflater.inflate(R.layout.activity_execise, null);
+        View view3 = inflater.inflate(R.layout.activity_friends, null);
+        View view4 = inflater.inflate(R.layout.activity_happy, null);
 
         views.add(view1);
         views.add(view2);

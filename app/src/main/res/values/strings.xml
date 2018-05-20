@@ -43,6 +43,12 @@
     <string name="scanOf_scan">扫一扫</string>
     <string name="setting">设置</string>
 
+    <string name="mybody">我的</string>
+    <string name="myplan">计划</string>
+    <string name="breakfast">早餐</string>
+    <string name="lunch">午餐</string>
+    <string name="dinner">晚餐</string>
+
     <!-- ======================================================================================================-->
 
 

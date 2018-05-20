@@ -52,7 +52,12 @@
         <activity android:name=".Activity.FoodActivity" />
         <activity android:name=".Activity.ExeciseActivity" />
         <activity android:name=".Activity.FriendsActivity" />
-        <activity android:name=".Activity.HappyActivity"></activity>
+        <activity android:name=".Activity.HappyActivity" />
+        <activity android:name=".Activity.FoodView.MybodyState" />
+        <activity android:name=".Activity.FoodView.MyplanActivity" />
+        <activity android:name=".Activity.FoodView.BreakfastActivity" />
+        <activity android:name=".Activity.FoodView.LunchActivity" />
+        <activity android:name=".Activity.FoodView.DinnerActicity"></activity>
     </application>
 
 </manifest>

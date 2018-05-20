@@ -7,4 +7,7 @@
     <color name="button_pressed">#dacdaa</color>
     <color name="mainFunctionTab_unSelect">#2c2c2c</color>
     <color name="mainFunctionTab_selected">#1afa29</color>
+    <color name="move_btn_unselect">#2c2c2c</color>
+    <color name="move_btn_selected">#f22300</color>
+
 </resources>
