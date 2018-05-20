@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/telephone"
+            android:title="手机号"
+            android:icon="@drawable/telephone_icon"/>
+
+        <item
+            android:id="@+id/mail"
+            android:icon="@drawable/mail_icon"
+            android:title="邮箱"/>
+
+    </group>
+
+</menu>

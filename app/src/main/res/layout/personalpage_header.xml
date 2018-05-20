@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:padding="10dp"
+    android:background="?attr/colorPrimary">
+
+    <com.leoren.liehu.MyView.CircleImageView
+        android:id="@+id/per_headIcon"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/head_icon"
+        android:layout_centerInParent="true"/>
+
+    <TextView
+        android:id="@+id/per_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:text="keda"
+        android:layout_below="@id/per_headIcon"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
+
+</RelativeLayout>
