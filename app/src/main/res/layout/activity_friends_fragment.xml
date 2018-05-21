@@ -2,13 +2,40 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.MainFunctionView.FriendsFragment">
 
-    <TextView
+    <android.support.v7.widget.Toolbar
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is FriendsActivity"/>
+        android:layout_height="0dp"
+        android:layout_weight="1.2"
+        android:background="@color/friends_page_color">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/fri_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/head_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/friends"
+            android:textSize="20sp"
+            android:textColor="@color/move_btn_unselect"
+            android:layout_gravity="center"/>
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/friends_tab_view"
+        android:layout_weight="12"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

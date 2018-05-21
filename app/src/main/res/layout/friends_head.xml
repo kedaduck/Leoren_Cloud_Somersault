@@ -1,0 +1,67 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/friends_page_color">
+
+        <TextView
+            android:id="@+id/fri_commlist_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/comm_list"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/fri_myfriends_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/myfriends"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <TextView
+            android:id="@+id/fri_chatroom_btn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/chatroom"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/friends_cursor"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/exe_page_color"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/fri_cursor_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

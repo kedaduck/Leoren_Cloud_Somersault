@@ -131,6 +131,7 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
 
         //默认第一个按钮字体为选中
         myBody_btn.setTextColor(COLOR_SELETED);
+        myBody_btn.setTextSize(16);
 
     }
 
@@ -141,6 +142,12 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
         breakfast_btn.setTextColor(COLOR_UNSELET);
         lunch_btn.setTextColor(COLOR_UNSELET);
         dinner_btn.setTextColor(COLOR_UNSELET);
+
+        myBody_btn.setTextSize(14);
+        myPlan_btn.setTextSize(14);
+        breakfast_btn.setTextSize(14);
+        lunch_btn.setTextSize(14);
+        dinner_btn.setTextSize(14);
     }
 
     @Override
@@ -188,6 +195,7 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
 
         //将滑动到的当前按钮颜色变为红色
         buttons[position].setTextColor(COLOR_SELETED);
+        buttons[position].setTextSize(16);
         cursorAnim(position);
     }
 
