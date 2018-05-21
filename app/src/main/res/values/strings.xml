@@ -61,5 +61,8 @@
     <!-- happy模块页面所用String ====================================================================================-->
     <string name="mydownload">我的下载</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">This is MyBodyPage</string>
+
     <!-- ======================================================================================================-->
 </resources>

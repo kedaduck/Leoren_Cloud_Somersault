@@ -1,12 +1,12 @@
 package com.leoren.liehu.Activity;
 
+import android.app.LocalActivityManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentContainer;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -23,7 +23,6 @@ import com.leoren.liehu.R;
 import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainFunction extends FragmentActivity implements View.OnClickListener , ViewPager.OnPageChangeListener{
 
@@ -38,7 +37,9 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
 
     //定义tab左拉右滑的一些工具和容器
     private ViewPager viewPager;
-    private ArrayList<Fragment> views;
+    private ArrayList<View> views;
+    private LocalActivityManager manager;
+
 
     //下面四个按钮  、 文本的数组
     private ImageView[] imgViews ;
@@ -60,6 +61,8 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
     private TextView execiseText;
     private TextView friendsText;
     private TextView happyText;
+
+    private TextView maintoolText;
 
 
 
@@ -85,6 +88,8 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+        manager = new LocalActivityManager(this, true);
+        manager.dispatchCreate(savedInstanceState);
 
         initView();
     }
@@ -111,6 +116,9 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
         //初始化文本数组
         textViews = new TextView[]{foodText, execiseText, friendsText, happyText};
 
+        //初始化ToolBar标题
+        maintoolText = findViewById(R.id.maintool_text);
+
         //给四个按钮 、 文本绑定监听器
         foodImg.setOnClickListener(this);
         execiseImg.setOnClickListener(this);
@@ -129,14 +137,25 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
         foodImg.setImageResource(R.drawable.food_seleced_icon);
         foodText.setTextColor(SELECTED_COLOR);
 
-        views = new ArrayList<Fragment>();
+        views = new ArrayList<View>();
 
-        views.add(new FoodFragment());
-        views.add(new ExeciseFragment());
-        views.add(new FriendsFragment());
-        views.add(new HappyFragment());
 
-        MyFragmentAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager(), views);
+
+        Intent intent1 = new Intent(MainFunction.this, FoodFragment.class);
+        View view1 = manager.startActivity("viewID", intent1).getDecorView();
+        Intent intent2 = new Intent(MainFunction.this, ExeciseFragment.class);
+        View view2 = manager.startActivity("viewID", intent2).getDecorView();
+        Intent intent3 = new Intent(MainFunction.this, FriendsFragment.class);
+        View view3 = manager.startActivity("viewID", intent3).getDecorView();
+        Intent intent4 = new Intent(MainFunction.this, HappyFragment.class);
+        View view4 = manager.startActivity("viewID", intent4).getDecorView();
+
+        views.add(view1);
+        views.add(view2);
+        views.add(view3);
+        views.add(view4);
+
+        MyFragmentAdapter adapter = new MyFragmentAdapter( views);
 
         viewPager.setAdapter(adapter);
         viewPager.setOnPageChangeListener(this);
@@ -167,24 +186,28 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
                 viewPager.setCurrentItem(0);
                 imgViews[0].setImageResource(R.drawable.food_seleced_icon);
                 textViews[0].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("饮食");
                 break;
             case R.id.tab_execise_img:
             case R.id.tab_execise_text:
                 viewPager.setCurrentItem(1);
                 imgViews[1].setImageResource(R.drawable.execise_selected_icon);
                 textViews[1].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("运动");
                 break;
             case R.id.tab_friends_img:
             case R.id.tab_friends_text:
                 viewPager.setCurrentItem(2);
                 imgViews[2].setImageResource(R.drawable.friends_selected_icon);
                 textViews[2].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("社交");
                 break;
             case R.id.tab_happy_img:
             case R.id.tab_happy_text:
                 viewPager.setCurrentItem(3);
                 imgViews[3].setImageResource(R.drawable.happy_selected_icon);
                 textViews[3].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("娱乐");
                 break;
         }
 
@@ -206,18 +229,22 @@ public class MainFunction extends FragmentActivity implements View.OnClickListen
             case 0:
                 imgViews[0].setImageResource(R.drawable.food_seleced_icon);
                 textViews[0].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("饮食");
                 break;
             case 1:
                 imgViews[1].setImageResource(R.drawable.execise_selected_icon);
                 textViews[1].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("运动");
                 break;
             case 2:
                 imgViews[2].setImageResource(R.drawable.friends_selected_icon);
                 textViews[2].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("社交");
                 break;
             case 3:
                 imgViews[3].setImageResource(R.drawable.happy_selected_icon);
                 textViews[3].setTextColor(SELECTED_COLOR);
+                maintoolText.setText("娱乐");
                 break;
             default:
                 break;

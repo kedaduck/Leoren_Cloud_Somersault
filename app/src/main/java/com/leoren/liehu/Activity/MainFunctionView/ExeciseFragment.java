@@ -12,12 +12,11 @@ import android.view.ViewGroup;
 
 import com.leoren.liehu.R;
 
-public class ExeciseFragment extends Fragment {
+public class ExeciseFragment extends FragmentActivity {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View v = inflater.inflate(R.layout.activity_execise_fragment, container, false);
-        return v;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_execise_fragment);
     }
 }
