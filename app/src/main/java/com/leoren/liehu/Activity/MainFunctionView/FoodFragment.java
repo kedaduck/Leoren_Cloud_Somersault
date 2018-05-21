@@ -1,5 +1,7 @@
 package com.leoren.liehu.Activity.MainFunctionView;
 
+import android.app.LocalActivityManager;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -10,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Breakfast;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Dinner;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Lunch;
@@ -17,6 +20,7 @@ import com.leoren.liehu.Activity.MainFunctionView.FoodView.Mybody;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Myplan;
 import com.leoren.liehu.R;
 import com.leoren.liehu.util.Adapter.FoodPagerAdapter;
+import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
 
@@ -27,8 +31,9 @@ import java.util.ArrayList;
 public class FoodFragment extends FragmentActivity implements ViewPager.OnPageChangeListener, View.OnClickListener{
 
     //存放五个功能模块的容器工具
-    private ArrayList<Fragment> views;
+    private ArrayList<View> views;
     private ViewPager viewPager;
+    private LocalActivityManager manager;
 
     //界面顶部的五个按钮
     private TextView myBody_btn;
@@ -59,6 +64,9 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_fragment);
+
+        manager = new LocalActivityManager(this, true);
+        manager.dispatchCreate(savedInstanceState);
 
         initView();
     }
@@ -95,16 +103,27 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
         dinner_btn.setOnClickListener(this);
 
 
-        views = new ArrayList<Fragment>();
+        views = new ArrayList<View>();
 
-        views.add(new Mybody());
-        views.add(new Myplan());
-        views.add(new Breakfast());
-        views.add(new Lunch());
-        views.add(new Dinner());
+        Intent intent1 = new Intent(FoodFragment.this, Mybody.class);
+        View view1 = manager.startActivity("viewID", intent1).getDecorView();
+        Intent intent2 = new Intent(FoodFragment.this, Myplan.class);
+        View view2 = manager.startActivity("viewID", intent2).getDecorView();
+        Intent intent3 = new Intent(FoodFragment.this, Breakfast.class);
+        View view3 = manager.startActivity("viewID", intent3).getDecorView();
+        Intent intent4 = new Intent(FoodFragment.this, Lunch.class);
+        View view4 = manager.startActivity("viewID", intent4).getDecorView();
+        Intent intent5 = new Intent(FoodFragment.this, Dinner.class);
+        View view5 = manager.startActivity("viewID", intent5).getDecorView();
 
-        FoodPagerAdapter adapter = new FoodPagerAdapter(getSupportFragmentManager(), views);
-        
+        views.add(view1);
+        views.add(view2);
+        views.add(view3);
+        views.add(view4);
+        views.add(view5);
+
+        MyFragmentAdapter adapter = new MyFragmentAdapter(views);
+
         viewPager.setAdapter(adapter);
 
         //先重置所有颜色为未选中
@@ -113,20 +132,6 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
         //默认第一个按钮字体为选中
         myBody_btn.setTextColor(COLOR_SELETED);
 
-
-
-        if(btn_widths == null){
-            btn_widths = new int[]{myBody_btn.getWidth(), myPlan_btn.getWidth(), breakfast_btn.getWidth(), lunch_btn.getWidth(), dinner_btn.getWidth()};
-        }
-        myBody_btn.post(new Runnable() {
-            @Override
-            public void run() {
-                LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) cursor.getLayoutParams();
-                lp.width = myBody_btn.getWidth() - myBody_btn.getPaddingLeft()*2;
-                cursor.setLayoutParams(lp);
-                cursor.setX(myBody_btn.getPaddingLeft());
-            }
-        });
     }
 
 
@@ -136,7 +141,6 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
         breakfast_btn.setTextColor(COLOR_UNSELET);
         lunch_btn.setTextColor(COLOR_UNSELET);
         dinner_btn.setTextColor(COLOR_UNSELET);
-
     }
 
     @Override

@@ -49,15 +49,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.FoodView.MybodyState" />
-        <activity android:name=".Activity.FoodView.MyplanActivity" />
-        <activity android:name=".Activity.FoodView.BreakfastActivity" />
-        <activity android:name=".Activity.FoodView.LunchActivity" />
-        <activity android:name=".Activity.FoodView.DinnerActicity" />
         <activity android:name=".Activity.MainFunctionView.FoodFragment" />
         <activity android:name=".Activity.MainFunctionView.ExeciseFragment" />
         <activity android:name=".Activity.MainFunctionView.FriendsFragment" />
         <activity android:name=".Activity.MainFunctionView.HappyFragment" />
+
+        <activity android:name=".Activity.MainFunctionView.FoodView.Mybody"/>
         <activity android:name=".Activity.MainFunctionView.FoodView.Myplan" />
         <activity android:name=".Activity.MainFunctionView.FoodView.Breakfast" />
         <activity android:name=".Activity.MainFunctionView.FoodView.Lunch" />
