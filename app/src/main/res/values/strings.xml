@@ -44,6 +44,19 @@
     <string name="setting">设置</string>
 
     <string name="mybody">我的</string>
+    <string name="mybody_shape">身体变化</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="Bust">胸围</string>
+    <string name="waistline">腰围</string>
+    <string name="hipline">臀围</string>
+    <string name="body_fat_rate">体脂率</string>
+    <string name="muscle_volume">肌肉量</string>
+    <string name="record_body_change">记录你的身体变化趋势</string>
+    <string name="not_record">未记录</string>
+
+
+
     <string name="myplan">计划</string>
     <string name="breakfast">早餐</string>
     <string name="lunch">午餐</string>
@@ -55,6 +68,9 @@
     <string name="execise_run">跑步</string>
     <string name="execise_walk">健走</string>
     <string name="execise_bike">骑行</string>
+    <string name="exe_exercise">锻炼</string>
+    <string name="sheshiwendu">℃</string>
+
 
     <!-- ======================================================================================================-->
 
@@ -65,11 +81,16 @@
     <string name="comm_list">通话</string>
     <string name="myfriends">好友</string>
     <string name="chatroom">群聊</string>
+    <string name="clear_history">清除历史记录</string>
 
     <!-- ======================================================================================================-->
 
     <!-- happy模块页面所用String ====================================================================================-->
     <string name="mydownload">我的下载</string>
+    <string name="exercise_video">小视频</string>
+    <string name="easy_aLittle">轻松一刻</string>
+    <string name="little_game">小游戏</string>
+    <string name="happy_attention">关注</string>
 
 
 

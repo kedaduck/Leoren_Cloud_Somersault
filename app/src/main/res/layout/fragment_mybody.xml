@@ -4,13 +4,66 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkgray"
     tools:context=".Activity.MainFunctionView.FoodView.Mybody">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is myBodyActivity"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/body_shape_change"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/height"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/weight"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/bust"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/waistline"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/hipline"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/body_fat_rate"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <include layout="@layout/muscle_volume"/>
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
 
 </LinearLayout>

@@ -45,9 +45,17 @@
             android:textColor="@color/move_btn_unselect"/>
 
         <TextView
+            android:id="@+id/exe_exercise_btn"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1.5"/>
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:padding="-5dp"
+            android:text="@string/exe_exercise"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect"/>
+
+        <include layout="@layout/weather"/>
 
 
     </LinearLayout>

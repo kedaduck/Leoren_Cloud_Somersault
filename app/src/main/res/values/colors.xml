@@ -13,6 +13,10 @@
     <color name="exe_page_color">#00bc71</color>
     <color name="friends_page_color">#3da6fe</color>
     <color name="happy_page_color">#ffa200</color>
+    <color name="clear_color">#bfbfbf</color>
+    <color name="white">#ffffff</color>
+    <color name="darkgray">#cccc</color>
+    <color name="dark">#000</color>
 
 
 </resources>

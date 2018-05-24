@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.ImageView;
@@ -24,11 +25,16 @@ import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 /**
  * food模块的Activity
  */
 public class FoodFragment extends FragmentActivity implements ViewPager.OnPageChangeListener, View.OnClickListener{
+
+    private CircleImageView food_head;
+
 
     //存放五个功能模块的容器工具
     private ArrayList<View> views;
@@ -67,6 +73,9 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
 
         manager = new LocalActivityManager(this, true);
         manager.dispatchCreate(savedInstanceState);
+
+        food_head = findViewById(R.id.food_head);
+        food_head.setOnClickListener(this);
 
         initView();
     }
@@ -172,6 +181,9 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
             case R.id.food_dinner_btn:
                 viewPager.setCurrentItem(4);
                 cursorAnim(4);
+                break;
+            case R.id.food_head:
+                MainFunction.drawerLayout.openDrawer(GravityCompat.START);
                 break;
             default:
                 break;

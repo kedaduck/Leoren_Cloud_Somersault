@@ -6,8 +6,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -24,12 +22,13 @@ import com.leoren.liehu.Activity.MainFunctionView.ExeciseFragment;
 import com.leoren.liehu.Activity.MainFunctionView.FoodFragment;
 import com.leoren.liehu.Activity.MainFunctionView.FriendsFragment;
 import com.leoren.liehu.Activity.MainFunctionView.HappyFragment;
-import com.leoren.liehu.Content.MainViewColor;
-import com.leoren.liehu.MyView.CircleImageView;
 import com.leoren.liehu.R;
 import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
+
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.leoren.liehu.Content.MainViewColor.EXECISE_PAGE_COLOR;
 import static com.leoren.liehu.Content.MainViewColor.FOOD_PAGE_COLOR;
@@ -40,14 +39,16 @@ import static com.leoren.liehu.Content.MainViewColor.UNSELECT_COLOR;
 
 public class MainFunction extends AppCompatActivity implements View.OnClickListener , ViewPager.OnPageChangeListener{
 
+    private static final String TAG = "MainFunction";
+
     //左拉个人主页布局
-    private DrawerLayout drawerLayout;
+    public static DrawerLayout drawerLayout;
 
     //ToolBar上的头像
     private CircleImageView headIcon;
 
     //左拉个人主页
-    private NavigationView personal_view;
+    public static NavigationView personal_view;
 
     //定义tab左拉右滑的一些工具和容器
     private ViewPager viewPager;
@@ -75,6 +76,12 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
     private TextView friendsText;
     private TextView happyText;
 
+    //四个功能页面上的头像按钮
+    private CircleImageView food_head_icon;
+    private CircleImageView exe_head_icon;
+    private CircleImageView fri_head_icon;
+    private CircleImageView happy_head_icon;
+
 
     private FrameLayout mainView;
 
@@ -91,19 +98,12 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
         }
         setContentView(R.layout.activity_main_function);
 
-
         drawerLayout = findViewById(R.id.drawer_layout);
-        /*
-        headIcon = findViewById(R.id.main_headIcon);
+
         personal_view = findViewById(R.id.per_view);
 
-        headIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        */
+
+
         manager = new LocalActivityManager(this, true);
         manager.dispatchCreate(savedInstanceState);
 
@@ -225,6 +225,8 @@ public class MainFunction extends AppCompatActivity implements View.OnClickListe
                 imgViews[3].setImageResource(R.drawable.happy_selected_icon);
                 textViews[3].setTextColor(SELECTED_COLOR);
                 mainView.setBackgroundColor(HAPPY_PAGE_COLOR);
+                break;
+            default:
                 break;
         }
 

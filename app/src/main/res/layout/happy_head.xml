@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/move_btn_unselect"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/exercise_video"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="16sp"
+            android:padding="-5dp"
+            android:text="@string/exercise_video"
+            android:gravity="center"
+            android:background="@drawable/happy_item_shape"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/easy_aLittle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:textSize="15sp"
+            android:padding="-5dp"
+            android:text="@string/easy_aLittle"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect" />
+
+        <TextView
+            android:id="@+id/happy_attention"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:textSize="15sp"
+            android:padding="-5dp"
+            android:text="@string/happy_attention"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect" />
+
+        <TextView
+            android:id="@+id/little_game"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:padding="-5dp"
+            android:text="@string/little_game"
+            android:gravity="center"
+            android:textColor="@color/move_btn_unselect" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/move_btn_unselect"/>
+
+</LinearLayout>

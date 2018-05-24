@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/muscle_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@string/muscle_volume"
+            android:textColor="@color/dark"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:id="@+id/muscle_isrecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_record"
+            android:layout_alignEnd="@+id/muscle_jiantou"
+            android:layout_marginRight="25dp"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/muscle_jiantou"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/jiantou"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp">
+
+        <ImageView
+            android:id="@+id/muscle_change_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:src="@drawable/record_body_shape"/>
+
+        <TextView
+            android:id="@+id/record_muscle_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/record_body_change"
+            android:layout_gravity="center_horizontal"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

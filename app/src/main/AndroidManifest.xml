@@ -53,12 +53,14 @@
         <activity android:name=".Activity.MainFunctionView.ExeciseFragment" />
         <activity android:name=".Activity.MainFunctionView.FriendsFragment" />
         <activity android:name=".Activity.MainFunctionView.HappyFragment" />
-
-        <activity android:name=".Activity.MainFunctionView.FoodView.Mybody"/>
+        <activity android:name=".Activity.MainFunctionView.FoodView.Mybody" />
         <activity android:name=".Activity.MainFunctionView.FoodView.Myplan" />
         <activity android:name=".Activity.MainFunctionView.FoodView.Breakfast" />
         <activity android:name=".Activity.MainFunctionView.FoodView.Lunch" />
-        <activity android:name=".Activity.MainFunctionView.FoodView.Dinner"></activity>
+        <activity android:name=".Activity.MainFunctionView.FoodView.Dinner" />
+        <activity android:name=".Activity.MainFunctionView.ExeciseView.Run" />
+        <activity android:name=".Activity.MainFunctionView.ExeciseView.Walk" />
+        <activity android:name=".Activity.MainFunctionView.ExeciseView.Bike"></activity>
     </application>
 
 </manifest>

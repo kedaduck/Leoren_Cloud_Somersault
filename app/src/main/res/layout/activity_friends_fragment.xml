@@ -5,14 +5,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/friends_page_color"
     tools:context=".Activity.MainFunctionView.FriendsFragment">
 
     <android.support.v7.widget.Toolbar
-
+        android:id="@+id/friends_toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.2"
-        android:background="@color/friends_page_color">
+        android:background="@color/friends_page_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/fri_head"
@@ -31,11 +34,15 @@
     </android.support.v7.widget.Toolbar>
 
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/friends_tab_view"
-        android:layout_weight="12"
+    <include layout="@layout/acticvity_search"/>
+
+    <ListView
+        android:id="@+id/friends_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="@color/white">
+
+    </ListView>
 
 </LinearLayout>
