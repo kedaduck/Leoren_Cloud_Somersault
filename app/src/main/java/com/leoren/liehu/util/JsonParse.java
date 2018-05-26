@@ -1,6 +1,6 @@
 package com.leoren.liehu.util;
 
-import com.leoren.liehu.ResultInformation.QQResultInformation;
+import com.leoren.liehu.User.ResultInformation.QQResultInfor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,8 +15,8 @@ import java.net.URL;
  */
 public class JsonParse {
 
-    public static QQResultInformation parseQQUserInfo(JSONObject object){
-        QQResultInformation information = null;
+    public static QQResultInfor parseQQUserInfo(JSONObject object){
+        QQResultInfor information = null;
         try{
             int ret = object.getInt("ret");
             String nickname = object.getString("nickname");
@@ -28,7 +28,7 @@ public class JsonParse {
             String figureurl_qq_2 = object.getString("figureurl_qq_2");
             URL url1 = new URL(figureurl_qq_1);
             URL url2 = new URL(figureurl_qq_2);
-            information = new QQResultInformation(ret, nickname, gender, province, city, year, url1, url2);
+            information = new QQResultInfor(ret, nickname, gender, province, city, year, url1, url2);
         }catch (JSONException e){
             e.printStackTrace();
         } catch (MalformedURLException e) {

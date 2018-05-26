@@ -10,6 +10,7 @@
     <string name="register_text">注册</string>
     <string name="forget_secret">忘记密码</string>
     <string name="other_method_login">其他方式登录</string>
+    <string name="login_mode_info">账号信息不互通</string>
     <string name="use_agree">使用即同意</string>
     <string name="liehu_agreement">《烈狐用户协议》</string>
     <string name="wrong_username">2—6位字符、只能为汉字、数字、英文字母(区分大小写)、“-”、“_”, 其他特殊字符不可以使用</string>

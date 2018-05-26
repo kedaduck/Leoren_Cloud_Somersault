@@ -11,9 +11,10 @@
     <android.support.v7.widget.Toolbar
 
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
-        android:background="@color/happy_page_color">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/happy_page_color"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/happy_head"

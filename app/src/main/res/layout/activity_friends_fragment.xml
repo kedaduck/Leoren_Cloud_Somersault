@@ -11,8 +11,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/friends_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/friends_page_color"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -33,16 +32,17 @@
 
     </android.support.v7.widget.Toolbar>
 
-
     <include layout="@layout/acticvity_search"/>
 
-    <ListView
+
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/friends_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9"
         android:background="@color/white">
 
-    </ListView>
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

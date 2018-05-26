@@ -9,9 +9,10 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1.2"
-        android:background="#DCDCDC">
+        android:layout_height="?attr/actionBarSize"
+        android:background="#DCDCDC"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/food_head"
@@ -31,11 +32,13 @@
 
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:text="轮播图"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:text="轮播图"/>
+
+
 
         <include layout="@layout/foodview_head"/>
 

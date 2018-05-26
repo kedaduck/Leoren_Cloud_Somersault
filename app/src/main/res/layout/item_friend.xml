@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/chatroomList"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chatroomList_headImg"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="50dp"
+            android:src="@drawable/head_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_weight="8"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <TextView
+                android:id="@+id/chatroomList_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="title"
+                android:maxLines="1"
+                android:paddingRight="180dp"
+                android:textSize="18sp"
+                android:textColor="@color/dark"/>
+
+            <TextView
+                android:id="@+id/chatroomList_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:paddingRight="30dp"
+                android:text="content"
+                  />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/chatroomList_time"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text="21:00"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/darkgray"/>
+
+
+
+
+
+</LinearLayout>

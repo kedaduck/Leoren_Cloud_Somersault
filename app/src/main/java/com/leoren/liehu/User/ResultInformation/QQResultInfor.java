@@ -1,4 +1,4 @@
-package com.leoren.liehu.ResultInformation;
+package com.leoren.liehu.User.ResultInformation;
 
 import java.net.URL;
 
@@ -7,7 +7,7 @@ import java.net.URL;
  * @author Leoren
  * @DATE 2018/5/19 16:53
  */
-public class QQResultInformation {
+public class QQResultInfor {
 
     //ret
     private static int ret;
@@ -37,7 +37,7 @@ public class QQResultInformation {
     }
 
     public static void setRet(int ret) {
-        QQResultInformation.ret = ret;
+        QQResultInfor.ret = ret;
     }
 
     public static String getQq_gender() {
@@ -45,7 +45,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_gender(String qq_gender) {
-        QQResultInformation.qq_gender = qq_gender;
+        QQResultInfor.qq_gender = qq_gender;
     }
 
     public static String getQq_nickname() {
@@ -53,7 +53,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_nickname(String qq_nickname) {
-        QQResultInformation.qq_nickname = qq_nickname;
+        QQResultInfor.qq_nickname = qq_nickname;
     }
 
     public static URL getQq_headicon_url() {
@@ -61,7 +61,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_headicon_url(URL qq_headicon_url) {
-        QQResultInformation.qq_headicon_url = qq_headicon_url;
+        QQResultInfor.qq_headicon_url = qq_headicon_url;
     }
 
     public static URL getQq_bigheadicon_url() {
@@ -69,7 +69,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_bigheadicon_url(URL qq_bigheadicon_url) {
-        QQResultInformation.qq_bigheadicon_url = qq_bigheadicon_url;
+        QQResultInfor.qq_bigheadicon_url = qq_bigheadicon_url;
     }
 
     public static String getQq_province() {
@@ -77,7 +77,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_province(String qq_province) {
-        QQResultInformation.qq_province = qq_province;
+        QQResultInfor.qq_province = qq_province;
     }
 
     public static String getQq_city() {
@@ -85,7 +85,7 @@ public class QQResultInformation {
     }
 
     public static void setQq_city(String qq_city) {
-        QQResultInformation.qq_city = qq_city;
+        QQResultInfor.qq_city = qq_city;
     }
 
     public static String getYear() {
@@ -93,14 +93,14 @@ public class QQResultInformation {
     }
 
     public static void setYear(String year) {
-        QQResultInformation.year = year;
+        QQResultInfor.year = year;
     }
 
-    public QQResultInformation() {
+    public QQResultInfor() {
 
     }
 
-    public QQResultInformation(int ret, String qq_nickname, String qq_gender, String qq_province, String qq_city, String year, URL qq_headicon_url, URL qq_bigheadicon_url){
+    public QQResultInfor(int ret, String qq_nickname, String qq_gender, String qq_province, String qq_city, String year, URL qq_headicon_url, URL qq_bigheadicon_url){
         setRet(ret);
         setQq_nickname(qq_nickname);
         setQq_gender(qq_gender);
