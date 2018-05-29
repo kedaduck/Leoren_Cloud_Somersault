@@ -1,12 +1,20 @@
 package com.leoren.liehu.util;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.google.gson.JsonObject;
+import com.leoren.liehu.Activity.loginandregister.MainActivity;
+import com.leoren.liehu.User.ResultInformation.MiResultInfo;
 import com.leoren.liehu.User.ResultInformation.QQResultInfor;
+import com.leoren.liehu.User.ResultInformation.WeiboResultInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.concurrent.Executor;
 
 /**
  * 用于解析各种JSON数据的工具类
@@ -15,11 +23,13 @@ import java.net.URL;
  */
 public class JsonParse {
 
-    public static QQResultInfor parseQQUserInfo(JSONObject object){
-        QQResultInfor information = null;
+    private static final String TAG = "JsonParse";
+
+    public static void parseQQUserInfo(JSONObject object){
         try{
             int ret = object.getInt("ret");
             String nickname = object.getString("nickname");
+            Log.i(TAG, "parseQQUserInfo: " + nickname);
             String gender = object.getString("gender");
             String province = object.getString("province");
             String city = object.getString("city");
@@ -28,14 +38,54 @@ public class JsonParse {
             String figureurl_qq_2 = object.getString("figureurl_qq_2");
             URL url1 = new URL(figureurl_qq_1);
             URL url2 = new URL(figureurl_qq_2);
-            information = new QQResultInfor(ret, nickname, gender, province, city, year, url1, url2);
+            QQResultInfor.setQQResultInfor(ret, nickname, gender, province, city, year, url1, url2);
         }catch (JSONException e){
             e.printStackTrace();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return information;
     }
 
+    public static boolean parseXiaoMiUserInfo(JSONObject userObject, JSONObject miPhoneObj){
+        if(userObject == null && miPhoneObj == null){
+            return false;
+        }
+        try{
+            String  result = userObject.getString("result");
+            if(!"ok".equals(result)){
+                return false;
+            }
+            JSONObject data = userObject.getJSONObject("data");
+            String nickName = data.getString("miliaoNick");
+            String userId = data.getString("userId");
+            String str1 = data.getString("miliaoIcon_75");
+            String str2 = data.getString("miliaoIcon");
+            URL url1 = new URL(str1);
+            URL url2 = new URL(str2);
+            JSONObject data2 = miPhoneObj.getJSONObject("data");
+            String phone = data2.getString("phone");
+            MiResultInfo.setMiResultInfo(nickName,url1, url2,userId,phone);
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 
+    public static void parseWeiboUserInfo(JSONObject obj1){
+        try{
+            int userId = obj1.getInt("id");
+            String screenName = obj1.getString("screen_name");
+            String name = obj1.getString("");
+            int province = obj1.getInt("");
+            int city = obj1.getInt("");
+            String location = obj1.getString("location");
+            String url1 = obj1.getString("");
+            String url2 = obj1.getString("");
+            String gender = obj1.getString("");
+            WeiboResultInfo.setWeiboUserInfo(userId,screenName,name,province,city,location,url1,gender,url2);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+    }
 }

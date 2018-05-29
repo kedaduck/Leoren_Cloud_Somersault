@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Leoren_Cloud_Somersault</string>
+    <string name="app_name">烈狐筋斗云</string>
 
 
     <!--  注册登录时所用String  ===============================================================================-->
@@ -27,6 +27,8 @@
     <string name="here_input_telnum">在此输入手机号</string>
     <string name="get_phone_confirm_code">获取验证码</string>
     <string name="here_input_confirm_code">在此输入验证码</string>
+    <string name="reset_secret">重置密码</string>
+    <string name="suer">确定</string>
 
     <!-- ====================================================================================================  -->
 
@@ -57,11 +59,11 @@
     <string name="not_record">未记录</string>
 
 
-
     <string name="myplan">计划</string>
     <string name="breakfast">早餐</string>
     <string name="lunch">午餐</string>
     <string name="dinner">晚餐</string>
+    <string name="choose_food_kind">选择  ></string>
 
     <!-- ======================================================================================================-->
 
@@ -92,7 +94,6 @@
     <string name="easy_aLittle">轻松一刻</string>
     <string name="little_game">小游戏</string>
     <string name="happy_attention">关注</string>
-
 
 
     <!-- ======================================================================================================-->

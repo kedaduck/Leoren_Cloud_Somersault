@@ -1,4 +1,4 @@
-package com.leoren.liehu.Activity;
+package com.leoren.liehu.Activity.loginandregister;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.leoren.Send_ConfirmCode;
+import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.R;
 import com.leoren.liehu.util.SendComfrimCode;
 

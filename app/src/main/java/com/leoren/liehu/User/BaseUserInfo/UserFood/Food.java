@@ -31,5 +31,16 @@ public class Food {
     public final static int SNACK_FOOD = 9;
     public final static int OTHER_FOOD = 10;
 
+    public static final ChooseFoodItem[] chooseFoodItems = {new ChooseFoodItem("主食"),
+                    new ChooseFoodItem("蛋类、肉类及制品"),
+            new ChooseFoodItem("奶类及制品"),
+            new ChooseFoodItem("蔬果和菌藻"),
+            new ChooseFoodItem("坚果、大豆及制品"),
+            new ChooseFoodItem("饮料"),
+            new ChooseFoodItem("食用油、油脂及制品"),
+            new ChooseFoodItem("调味品"),
+            new ChooseFoodItem("零食、点心、冷饮"),
+            new ChooseFoodItem("其它")};
+
 
 }

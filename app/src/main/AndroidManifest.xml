@@ -16,12 +16,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/login"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".Activity.loginandregister.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
@@ -39,16 +45,10 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".Activity.Register" />
-        <activity android:name=".Activity.Register_tel" />
+        <activity android:name=".Activity.loginandregister.Register" />
+        <activity android:name=".Activity.loginandregister.Register_tel" />
         <activity android:name=".Activity.PersonActivity" />
-        <activity android:name=".Activity.MainFunction">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activity.MainFunction" />
         <activity android:name=".Activity.MainFunctionView.FoodFragment" />
         <activity android:name=".Activity.MainFunctionView.ExeciseFragment" />
         <activity android:name=".Activity.MainFunctionView.FriendsFragment" />
@@ -60,7 +60,17 @@
         <activity android:name=".Activity.MainFunctionView.FoodView.Dinner" />
         <activity android:name=".Activity.MainFunctionView.ExeciseView.Run" />
         <activity android:name=".Activity.MainFunctionView.ExeciseView.Walk" />
-        <activity android:name=".Activity.MainFunctionView.ExeciseView.Bike"></activity>
+        <activity android:name=".Activity.MainFunctionView.ExeciseView.Bike" />
+
+        <!-- 小米登录时跳转页面 -->
+
+        <activity
+            android:name=".Activity.loginandregister.xiaomi.CustomizedAuthorizedActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name=".Activity.loginandregister.xiaomi.MiLoginActivity" />
+        <activity android:name=".Activity.loginandregister.ForgetSecret" />
+        <activity android:name=".Activity.loginandregister.ResetSecret" />
+        <activity android:name=".Activity.loginandregister.huawei.BaseActivity"></activity>
     </application>
 
 </manifest>

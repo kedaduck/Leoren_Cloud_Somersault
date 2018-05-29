@@ -7,9 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainFunctionView.FoodView.Dinner">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/dinner_choose_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is DinnerActivity"/>
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/food_page_color"/>
 
 </LinearLayout>

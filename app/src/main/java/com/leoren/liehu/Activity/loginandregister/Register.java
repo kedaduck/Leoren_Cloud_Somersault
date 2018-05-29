@@ -1,4 +1,4 @@
-package com.leoren.liehu.Activity;
+package com.leoren.liehu.Activity.loginandregister;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
