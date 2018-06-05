@@ -7,15 +7,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +36,7 @@ import com.huawei.hms.support.api.hwid.HuaweiIdStatusCodes;
 import com.huawei.hms.support.api.hwid.SignInHuaweiId;
 import com.huawei.hms.support.api.hwid.SignInResult;
 import com.leoren.liehu.Activity.MainFunction;
+import com.leoren.liehu.Activity.MainFunctionView.ExeciseView.Exercise;
 import com.leoren.liehu.Activity.PersonActivity;
 import com.leoren.liehu.Activity.loginandregister.huawei.BaseActivity;
 import com.leoren.liehu.Activity.loginandregister.xiaomi.CustomizedAuthorizedActivity;
@@ -61,15 +68,21 @@ import com.xiaomi.account.openauth.XiaomiOAuthorize;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener ,View.OnFocusChangeListener{
@@ -111,6 +124,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     //烈狐协议按钮
     private TextView agreement;
 
+    //普通登录的参数
+    private final static int NORMAL_LOGIN_SUCC = 3;
+    private final static int NORMAL_LOGIN_NOUSER = 1;
+    private final static int NORMAL_LOGIN_WRONGPASS = 2;
+
+    private TextView no_user ;
+    private TextView wrong_pass;
+
+
     //调用QQ接口的一个实例
     private static Tencent mTencent;
 
@@ -140,6 +162,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
 
         login_userInfo = findViewById(R.id.login_userinfo);
         login_secret = findViewById(R.id.login_secret);
+        no_user = findViewById(R.id.no_user);
+        wrong_pass = findViewById(R.id.wrong_pass);
         normal_login = findViewById(R.id.normal_login);
         normal_register = findViewById(R.id.normal_register);
         forget_secret = findViewById(R.id.forget_secret);
@@ -210,7 +234,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
 
     }
 
-    private void  startMainFunction(){
+    private void startMainFunction(){
         Intent intent = new Intent(MainActivity.this, MainFunction.class);
         startActivity(intent);
         this.finish();
@@ -219,9 +243,76 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     /**
      * 正常登录   通过软件自己的登录方式注册后的账号信息登录
      */
+
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case NORMAL_LOGIN_SUCC:
+                    startMainFunction();
+                    break;
+                case NORMAL_LOGIN_NOUSER://没有此用户
+                    no_user.setVisibility(View.VISIBLE);
+                    break;
+                case NORMAL_LOGIN_WRONGPASS://用户名错误
+                    wrong_pass.setVisibility(View.VISIBLE);
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     private void normal_login(){
         LOGIN_MODE = Appuser.NORMAL_LOGIN_MODE;
+
+        final String username = login_userInfo.getText().toString().trim();
+        final String password = login_secret.getText().toString().trim();
+        final String path = "http://10.0.2.2:8080/Android/servlet/LoginServlet";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = null;
+                BufferedReader reader = null;
+                try{
+                    client = new OkHttpClient();
+                    RequestBody body = new FormBody.Builder()
+                            .add("username", username)
+                            .add("password",password)
+                            .build();
+                    Request request = new Request.Builder()
+                            .url(path)
+                            .post(body)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    InputStream in = response.body().byteStream();
+                    reader = new BufferedReader(new InputStreamReader(in));
+                    String line ;
+                    final StringBuilder sb = new StringBuilder();
+                    while ((line = reader.readLine()) != null){
+                        sb.append(line);
+                    }
+                    int flag = JsonParse.parseNormalLogin(sb.toString());
+                    Message message = new Message();
+                    message.what = flag;
+                    handler.sendMessage(message);
+                }catch (Exception e){
+
+                }finally {
+                    if(reader != null){
+                        try {
+                            reader.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }).start();
     }
+
+
+
+
 
     @Override
     protected void onRestart() {
@@ -269,7 +360,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
      */
     private void huawei_login(){
         LOGIN_MODE = Appuser.HUAWEI_LOGIN_MODE;
-
         signIn();
         Toast.makeText(MainActivity.this, "华为登录", Toast.LENGTH_LONG).show();
     }
@@ -288,6 +378,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                 .setCustomizedAuthorizeActivityClass(CustomizedAuthorizedActivity.class)
                 .startGetAccessToken(MainActivity.this);
         waitAndShowFutureResult(future);
+
     }
 
     /**
@@ -319,9 +410,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         switch (v.getId()){
             case R.id.login_userinfo:
                 changeEditColor(login_userInfo, R.drawable.login_user_focused_icon);
+                no_user.setVisibility(View.GONE);
+                wrong_pass.setVisibility(View.GONE);
                 break;
             case R.id.login_secret:
                 changeEditColor(login_secret, R.drawable.login_secret_focused_icon);
+                no_user.setVisibility(View.GONE);
+                wrong_pass.setVisibility(View.GONE);
                 break;
         }
     }
@@ -433,6 +528,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     private void getAllMiUserInfo(){
         getMiUserInfo();
         getMiPhone();
+
     }
 
     private void getMiUserInfo(){
@@ -515,11 +611,33 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
+
                         JsonParse.parseXiaoMiUserInfo(obj2, obj1);
+                        actionDelayed();
+                        startMainFunction();
+                        Log.i(TAG, "getAllMiUserInfo: 1111111111111");
                     }
                 }
             }
         });
+    }
+
+    private void actionDelayed(){
+        final PopupWindow window = new PopupWindow();
+        window.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        window.setFocusable(false);
+        View view = LayoutInflater.from(this).inflate(R.layout.popup, null);
+        window.setContentView(view);
+        window.showAtLocation(getWindow().getDecorView(), Gravity.CENTER, 0 ,0);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                window.dismiss();
+            }
+        },3500);
+
     }
 
 
@@ -626,7 +744,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         }
         PendingResult<SignInResult> signInResult = HuaweiId.HuaweiIdApi.signIn(client);
         signInResult.setResultCallback(new SignInResultCallback());
-        Toast.makeText(MainActivity.this, "华为登陆啊啊啊啊啊啊啊啊啊啊", Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -652,7 +769,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                    String headUrl = account.getPhotoUrl();
                    String userId = account.getUid();
                    int gender = account.getGender();
-                   Log.i(TAG, "onResult: 华为 nickName" + nickName);
+                   Toast.makeText(MainActivity.this, "华为登陆"+nickName, Toast.LENGTH_LONG).show();
                    HuaweiResultInfo.setHuaweiResultInfo(nickName,headUrl,openId,userId,gender,accessToken);
 
                }

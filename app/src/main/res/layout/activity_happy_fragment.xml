@@ -1,45 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Activity.MainFunctionView.HappyFragment">
+    android:background="@color/white">
 
-    <android.support.v7.widget.Toolbar
-
+    <LinearLayout
+        android:id="@+id/happy_top_fragment"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/happy_page_color"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/happy_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/head_icon"/>
+        <android.support.v7.widget.Toolbar
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/happy"
-            android:textSize="20sp"
-            android:textColor="@color/move_btn_unselect"
-            android:layout_gravity="center"/>
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/happy_page_color"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-    </android.support.v7.widget.Toolbar>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/happy_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/head_icon"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="轮播图"
-        android:layout_weight="3"
-        android:background="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/happy"
+                android:textSize="20sp"
+                android:textColor="@color/move_btn_unselect"
+                android:layout_gravity="center"/>
 
-    <include layout="@layout/happy_head"/>
+        </android.support.v7.widget.Toolbar>
+
+        <include layout="@layout/happy_head"/>
+
+    </LinearLayout>
+
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/happy_viewpager"

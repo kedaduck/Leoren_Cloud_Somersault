@@ -32,7 +32,34 @@ public class Walk {
     /**
      * 这次运动的时间
      */
-    private Date  date;
+    private Date date;
+
+    /**
+     * 这次运动开始时间格式是"10:03"
+     */
+    private String startTime;
+
+    /**
+     * 这次运动结束时间格式是"10:03"
+     */
+    private String endTime;
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
 
     /**
      * 本次运动所消耗能量
@@ -90,12 +117,14 @@ public class Walk {
     public Walk() {
     }
 
-    public Walk(int totalTime, int averageTime, int totalLength, int averageLength, Date date, int walkEnergy) {
+    public Walk(int totalTime, int averageTime, int totalLength, int averageLength, Date date, String startTime, String endTime, int walkEnergy) {
         this.totalTime = totalTime;
         this.averageTime = averageTime;
         this.totalLength = totalLength;
         this.averageLength = averageLength;
         this.date = date;
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.walkEnergy = walkEnergy;
     }
 }

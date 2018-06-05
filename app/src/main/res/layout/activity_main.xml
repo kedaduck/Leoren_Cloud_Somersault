@@ -29,6 +29,15 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/login_user_unfocused_icon"
             android:hint="@string/login_or_re_userinfo"/>
+        <TextView
+            android:id="@+id/no_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_user"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff0000"
+            android:visibility="gone"/>
 
         <EditText
             android:id="@+id/login_secret"
@@ -36,6 +45,15 @@
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/login_secret_unfocused_icon"
             android:hint="@string/secret" />
+        <TextView
+            android:id="@+id/wrong_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wrong_pass"
+            android:textSize="14sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="#ff0000"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:orientation="horizontal"

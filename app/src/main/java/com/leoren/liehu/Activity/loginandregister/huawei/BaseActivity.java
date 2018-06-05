@@ -4,10 +4,12 @@ import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.huawei.hms.api.ConnectionResult;
 import com.huawei.hms.api.HuaweiApiAvailability;
 import com.huawei.hms.api.HuaweiApiClient;
+import com.leoren.liehu.Activity.loginandregister.MainActivity;
 import com.leoren.liehu.R;
 
 public class BaseActivity extends AppCompatActivity implements HuaweiApiClient.ConnectionCallbacks,HuaweiApiClient.OnConnectionFailedListener{
@@ -45,6 +47,8 @@ public class BaseActivity extends AppCompatActivity implements HuaweiApiClient.C
         //华为移动服务client连接成功，在这边处理业务自己的事件
         //Huawei Mobile Service Client connection successful, handle business own event here
         Log.i(TAG, "HuaweiApiClient Connect Successfully!");
+        Toast.makeText(this, "华为登陆啊啊啊啊啊啊啊啊啊啊", Toast.LENGTH_LONG).show();
+
     }
 
     @Override

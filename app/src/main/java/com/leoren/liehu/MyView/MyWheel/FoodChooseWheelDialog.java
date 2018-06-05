@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.MyView.MyWheel.OtherView.OnWheelChangedListener;
 import com.leoren.liehu.MyView.MyWheel.OtherView.OnWheelScrollListener;
 import com.leoren.liehu.MyView.MyWheel.OtherView.WheelView;
@@ -179,11 +180,11 @@ public class FoodChooseWheelDialog extends Dialog implements View.OnClickListene
 
 
 
-
-    public FoodChooseWheelDialog(Context context, int themeResId) {
+/*
+    public FoodChooseWheelDialog(Class<MainFunction> context, DateChooseInterface themeResId) {
         super(context, themeResId);
     }
-
+*/
     /**
      * 设置文字大小
      */

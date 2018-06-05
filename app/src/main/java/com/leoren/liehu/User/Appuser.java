@@ -3,12 +3,6 @@ package com.leoren.liehu.User;
 import com.leoren.liehu.User.BaseUserInfo.UserAddress;
 import com.leoren.liehu.User.BaseUserInfo.UserBodyInfo;
 import com.leoren.liehu.User.BaseUserInfo.UserExe;
-import com.leoren.liehu.User.BaseUserInfo.UserExercise.Bike;
-import com.leoren.liehu.User.BaseUserInfo.UserExercise.Run;
-import com.leoren.liehu.util.MyDate;
-
-import java.util.Date;
-import java.util.HashMap;
 
 /**
  * App用户

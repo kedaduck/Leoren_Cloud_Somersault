@@ -88,4 +88,17 @@ public class JsonParse {
             e.printStackTrace();
         }
     }
+
+    public static int parseNormalLogin(String str){
+        int flag = 0;
+        try{
+            JSONObject obj = new JSONObject(str);
+            int status = obj.getInt("status");
+            Log.i(TAG, "parseNormalLogin: " + status);
+            flag = status;
+        }catch (JSONException e){
+
+        }
+        return flag;
+    }
 }
