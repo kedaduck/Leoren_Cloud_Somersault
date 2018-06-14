@@ -31,6 +31,7 @@
     <string name="suer">确定</string>
     <string name="no_user">无此用户</string>
     <string name="wrong_pass">密码错误</string>
+    <string name="has_thisName">已有此用户</string>
 
     <!-- ====================================================================================================  -->
 

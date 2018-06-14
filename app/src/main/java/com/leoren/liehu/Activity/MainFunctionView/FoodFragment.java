@@ -30,6 +30,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * food模块的Activity
+ *
  */
 public class FoodFragment extends FragmentActivity implements ViewPager.OnPageChangeListener, View.OnClickListener{
 

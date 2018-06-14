@@ -13,11 +13,14 @@ import android.widget.Toolbar;
 import com.leoren.Send_ConfirmCode;
 import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.R;
+import com.leoren.liehu.User.service.UserService;
 import com.leoren.liehu.util.SendComfrimCode;
 
 import static com.leoren.liehu.util.SendComfrimCode.Send_Message_Code;
 
 public class Register_tel extends AppCompatActivity implements View.OnClickListener{
+
+    private static final String TAG = "Register_tel";
 
     private ImageView backfrom_finishRegister;
     private TextView regi_phoneNumber;
@@ -26,6 +29,9 @@ public class Register_tel extends AppCompatActivity implements View.OnClickListe
     private Button finishRegister;
     private String phoneNumber;
     private String randNum;
+
+
+    private UserService userService = new UserService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,9 @@ public class Register_tel extends AppCompatActivity implements View.OnClickListe
         backfrom_finishRegister.setOnClickListener(this);
         finishRegister.setOnClickListener(this);
         get_confirmCode.setOnClickListener(this);
+
+
+
 
     }
 
@@ -82,12 +91,21 @@ public class Register_tel extends AppCompatActivity implements View.OnClickListe
     private void finishRegister(){
         String inputComfrimCode = confirmCode.getText().toString();
         if(randNum.equals(inputComfrimCode)){
-            Bundle bundle = new Bundle();
-            bundle.putString("phoneNumber", phoneNumber);
+            String username = getIntent().getStringExtra("nickname");
+            String password = getIntent().getStringExtra("password");
+            saveDataToDB(username, password, regi_phoneNumber.getText().toString().trim());
             Intent intent = new Intent(this, MainFunction.class);
-            startActivity(intent,bundle);
+            startActivity(intent);
         }else{
             Toast.makeText(this, "验证码有误，请重新输入",Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void saveDataToDB(String username, String password,String phone){
+        Bundle bundle = new Bundle();
+        bundle.putString("nickname",username);
+        bundle.putString("password",password);
+        bundle.putString("phone",phone);
+        userService.registDataSave(bundle);
     }
 }

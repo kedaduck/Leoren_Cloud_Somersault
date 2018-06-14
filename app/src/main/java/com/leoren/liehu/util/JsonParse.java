@@ -89,16 +89,40 @@ public class JsonParse {
         }
     }
 
-    public static int parseNormalLogin(String str){
-        int flag = 0;
+    public static int[] parseNormalLogin(String str){
+        int flag[] = new int[2];
         try{
             JSONObject obj = new JSONObject(str);
             int status = obj.getInt("status");
+            int userid = obj.getInt("userid");
             Log.i(TAG, "parseNormalLogin: " + status);
-            flag = status;
+            flag[0] = status;
+            flag[1] = userid;
         }catch (JSONException e){
 
         }
         return flag;
+    }
+
+    public static int parseHasPhone(String s) {
+        int has = 0;
+        try{
+            JSONObject obj = new JSONObject(s);
+            has = obj.getInt("hasphone");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return has;
+    }
+
+    public static int parseResetPasswd(String s) {
+        int isSuccess = 0;
+        try{
+            JSONObject obj = new JSONObject(s);
+            isSuccess = obj.getInt("isSuccess");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return isSuccess;
     }
 }

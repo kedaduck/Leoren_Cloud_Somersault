@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
@@ -41,6 +42,7 @@ import com.leoren.liehu.Activity.PersonActivity;
 import com.leoren.liehu.Activity.loginandregister.huawei.BaseActivity;
 import com.leoren.liehu.Activity.loginandregister.xiaomi.CustomizedAuthorizedActivity;
 import com.leoren.liehu.Content.LiehuAgreeMent;
+import com.leoren.liehu.Helper.HttpContent;
 import com.leoren.liehu.ImpContent.MiImpContent;
 import com.leoren.liehu.ImpContent.QQImpContent;
 import com.leoren.liehu.ImpContent.WeiboImpContent;
@@ -78,6 +80,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -125,8 +129,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     private TextView agreement;
 
     //普通登录的参数
-    private final static int NORMAL_LOGIN_SUCC = 3;
-    private final static int NORMAL_LOGIN_NOUSER = 1;
+    private final static int NORMAL_LOGIN_SUCC = 1;
+    private final static int NORMAL_LOGIN_NOUSER = 0;
     private final static int NORMAL_LOGIN_WRONGPASS = 2;
 
     private TextView no_user ;
@@ -248,7 +252,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         @Override
         public void handleMessage(Message msg) {
             switch (msg.what){
-                case NORMAL_LOGIN_SUCC:
+                case NORMAL_LOGIN_SUCC://正常登录
                     startMainFunction();
                     break;
                 case NORMAL_LOGIN_NOUSER://没有此用户
@@ -267,7 +271,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
 
         final String username = login_userInfo.getText().toString().trim();
         final String password = login_secret.getText().toString().trim();
-        final String path = "http://10.0.2.2:8080/Android/servlet/LoginServlet";
+        final String path = isType(username,password);
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -275,13 +279,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                 BufferedReader reader = null;
                 try{
                     client = new OkHttpClient();
-                    RequestBody body = new FormBody.Builder()
-                            .add("username", username)
-                            .add("password",password)
-                            .build();
                     Request request = new Request.Builder()
                             .url(path)
-                            .post(body)
                             .build();
                     Response response = client.newCall(request).execute();
                     InputStream in = response.body().byteStream();
@@ -291,9 +290,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                     while ((line = reader.readLine()) != null){
                         sb.append(line);
                     }
-                    int flag = JsonParse.parseNormalLogin(sb.toString());
+                    int flag = JsonParse.parseNormalLogin(sb.toString())[0];
+                    int userid = JsonParse.parseNormalLogin(sb.toString())[1];
                     Message message = new Message();
                     message.what = flag;
+                    if(flag == NORMAL_LOGIN_SUCC){
+                        saveLocalFile(userid);
+                    }
                     handler.sendMessage(message);
                 }catch (Exception e){
 
@@ -308,10 +311,51 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                 }
             }
         }).start();
+
     }
 
+    private void saveLocalFile(int userid){
+        SharedPreferences.Editor editor = getSharedPreferences("currentUser", MODE_PRIVATE).edit();
+        editor.putInt("userid", userid);
+        editor.putInt("loginmode", Appuser.NORMAL_LOGIN_MODE);
+        editor.apply();
+    }
 
+    private String isType( String username, String password){
+        int type = 0;
+        String emailRegex = "\\w[-\\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\\.)+[A-Za-z]{2,14}";
+            String phoneRegex = "0?(13|14|15|18|17)[0-9]{9}";
+        String userRegex = "[A-Za-z0-9_\\\\-\\\\u4e00-\\\\u9fa5]+";
+        Pattern r1 = Pattern.compile(emailRegex);
+        Pattern r2 = Pattern.compile(phoneRegex);
+        Pattern r3 = Pattern.compile(userRegex);
+        Matcher m1 = r1.matcher(username);
+        Matcher m2 = r2.matcher(username);
+        Matcher m3 = r3.matcher(username);
+        if(m1.matches()){
+            type = 1;
+        }else if(m2.matches()){
+            type =  2;
+        }else {
+            type =  3;
+        }
 
+        String path = null;
+        switch (type) {
+            case 1:
+                path = HttpContent.REQUEST_PATH + "user_login.action?email=" + username + "&password=" + password + "&logintype=" + type;
+                break;
+            case 2:
+                path = HttpContent.REQUEST_PATH + "user_login.action?phone=" + username + "&password=" + password + "&logintype=" + type;
+                break;
+            case 3:
+                path = HttpContent.REQUEST_PATH + "user_login.action?username=" + username + "&password=" + password + "&logintype=" + type;
+                break;
+            default:
+                path = null;
+        }
+        return path;
+    }
 
 
     @Override

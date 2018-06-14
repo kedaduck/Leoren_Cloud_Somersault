@@ -1,21 +1,41 @@
 package com.leoren.liehu.Activity.loginandregister;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ThemedSpinnerAdapter;
+import android.widget.Toast;
 
 import com.leoren.liehu.R;
+import com.leoren.liehu.User.service.UserService;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Register extends AppCompatActivity implements View.OnClickListener, View.OnFocusChangeListener{
+
+    private static final String TAG = "Register";
+
 
     private ImageView back ;
     private EditText nickname;
     private TextView wrongnickname;
+    private TextView hasthisname;
     private EditText password;
     private TextView wrongpassword;
     private EditText repassword;
@@ -26,6 +46,15 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
     private String passwordText;
     private String repasswordText;
 
+    public final static int HAS_THIS_NAME = 1;
+    public final static int NO_HAS_THIS_NAME = -1;
+    public static int IS_HAS_NAME = 0;
+    public static final int WORNG_HTTP_HASNAME = 5;
+
+    private UserService userService = new UserService();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +62,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
 
         back = findViewById(R.id.from_register_back);
         nickname = findViewById(R.id.register_nickname);
+        hasthisname = findViewById(R.id.has_thisname);
         wrongnickname = findViewById(R.id.wrong_nickname);
         password = findViewById(R.id.register_password);
         wrongpassword = findViewById(R.id.wrong_password);
@@ -52,8 +82,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
                 finish();
                 break;
             case R.id.coun_register:
-                counRegister();
+                isHasThisName(nickname.getText().toString());
                 break;
+            case R.id.register_password:
+                if(hasthisname.getVisibility()==View.VISIBLE){
+                    hasthisname.setVisibility(View.GONE);
+                }
             default:
                 break;
         }
@@ -65,6 +99,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
             case R.id.register_nickname:
                 if(hasFocus && (wrongnickname.getVisibility() == View.VISIBLE )){
                     wrongnickname.setVisibility(View.GONE);
+                }
+                if(hasFocus){
+                    hasthisname.setVisibility(View.GONE);
                 }
                 break;
             case R.id.register_password:
@@ -82,6 +119,23 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         }
     }
 
+
+    private void isHasThisName(String name){
+        int status = userService.findByName(name);
+        switch (status){
+            case NO_HAS_THIS_NAME:
+                counRegister();
+                break;
+            case HAS_THIS_NAME:
+                hasthisname.setVisibility(View.VISIBLE);
+                break;
+            case WORNG_HTTP_HASNAME:
+                //Toast.makeText(Register.this, "网络出错，请稍后再试！",Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+    }
+
     private void counRegister(){
         nicknameText = nickname.getText().toString().trim();
         passwordText = password.getText().toString().trim();
@@ -90,12 +144,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
         boolean flag2 = isvaildOfpassword(passwordText);
         boolean flag3 = isvaildOfrepassword(repasswordText);
         if(flag1 && flag2 && flag3){
-            Bundle bundle = new Bundle();
-            bundle.putString("nickname", nicknameText);
-            bundle.putString("password", passwordText);
-            bundle.putString("repassword", repasswordText);
-            saveInfoTOdatabase(bundle);
             Intent intent = new Intent(this, Register_tel.class);
+            intent.putExtra("nickname",nicknameText);
+            intent.putExtra("password",passwordText);
             startActivity(intent);
         }
 
@@ -105,7 +156,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener,
      * 这个方法还没写
      */
     private void saveInfoTOdatabase(Bundle bundle){
-
+        //和手机号一同写入
     }
 
     private boolean isvaildOfnickname(String nicknameText){

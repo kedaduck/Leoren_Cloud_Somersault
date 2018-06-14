@@ -22,17 +22,18 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/happy_head"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/head_icon"/>
+                android:layout_width="35dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/head_icon" />
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="@string/happy"
-                android:textSize="20sp"
                 android:textColor="@color/move_btn_unselect"
-                android:layout_gravity="center"/>
+                android:textSize="20sp" />
 
         </android.support.v7.widget.Toolbar>
 

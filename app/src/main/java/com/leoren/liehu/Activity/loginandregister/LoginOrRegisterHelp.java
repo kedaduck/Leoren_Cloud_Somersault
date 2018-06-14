@@ -7,7 +7,11 @@ package com.leoren.liehu.Activity.loginandregister;
  */
 public class LoginOrRegisterHelp {
 
-    //public static QQ_LOGIN_MODE =
+
+
+    public static String port = "8080";
+
+    public static String directUrl = "http://10.0.2.2:" + port +"/Android/servlet/";
 
 
 }
