@@ -13,10 +13,11 @@ import java.util.List;
  */
 public class AbstractWheelAdapter implements WheelViewAdapter{
 
-    private List<DataSetObserver> dataSetObservers;
+    // Observers
+    private List<DataSetObserver> datasetObservers;
 
     @Override
-    public int getItemCount() {
+    public int getItemsCount() {
         return 0;
     }
 
@@ -32,40 +33,39 @@ public class AbstractWheelAdapter implements WheelViewAdapter{
 
     @Override
     public void registerDataSetObserver(DataSetObserver observer) {
-        if(dataSetObservers == null){
-            dataSetObservers = new LinkedList<DataSetObserver>();
+        if (datasetObservers == null) {
+            datasetObservers = new LinkedList<DataSetObserver>();
         }
-        dataSetObservers.add(observer);
+        datasetObservers.add(observer);
     }
 
     @Override
     public void unregisterDataSetObserver(DataSetObserver observer) {
-        if(dataSetObservers != null){
-            dataSetObservers.remove(observer);
+        if (datasetObservers != null) {
+            datasetObservers.remove(observer);
         }
     }
 
     /**
-     * 告诉发生了数据更改
+     * Notifies observers about data changing
      */
-    protected void notifyDataChangeEvent(){
-        if(dataSetObservers != null){
-            for(DataSetObserver observer :  dataSetObservers){
+    protected void notifyDataChangedEvent() {
+        if (datasetObservers != null) {
+            for (DataSetObserver observer : datasetObservers) {
                 observer.onChanged();
             }
         }
     }
 
     /**
-     * 数据出错
+     * Notifies observers about invalidating data
      */
-    protected void notifyDataInvalidatedEvent(){
-        if(dataSetObservers != null){
-            for(DataSetObserver observer : dataSetObservers){
+    protected void notifyDataInvalidatedEvent() {
+        if (datasetObservers != null) {
+            for (DataSetObserver observer : datasetObservers) {
                 observer.onInvalidated();
             }
         }
     }
-
 
 }

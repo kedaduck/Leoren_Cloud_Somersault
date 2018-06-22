@@ -8,15 +8,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
-import com.leoren.Send_ConfirmCode;
 import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.R;
 import com.leoren.liehu.User.service.UserService;
-import com.leoren.liehu.util.SendComfrimCode;
-
-import static com.leoren.liehu.util.SendComfrimCode.Send_Message_Code;
+import com.leoren.liehu.Util.SendComfrimCode;
 
 public class Register_tel extends AppCompatActivity implements View.OnClickListener{
 

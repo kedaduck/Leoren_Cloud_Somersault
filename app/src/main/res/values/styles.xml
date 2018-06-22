@@ -19,4 +19,13 @@
         <item name="android:indeterminateDrawable">@drawable/videoview_progress_rotate</item>
         <item name="android:indeterminateDuration">1000</item>
     </style>
+
+    <style name="height_wheel_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/line_stroke</item>
+
+    </style>
+
+
 </resources>

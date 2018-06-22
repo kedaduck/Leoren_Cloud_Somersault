@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +22,7 @@ import com.leoren.liehu.Activity.MainFunctionView.FoodFragment;
 import com.leoren.liehu.Activity.MainFunctionView.FriendsFragment;
 import com.leoren.liehu.Activity.MainFunctionView.HappyFragment;
 import com.leoren.liehu.R;
-import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
+import com.leoren.liehu.Util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
 

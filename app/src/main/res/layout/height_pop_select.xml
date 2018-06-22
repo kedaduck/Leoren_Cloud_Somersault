@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/friends_page_color"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:text="@string/select_height"/>
+
+        <TextView
+            android:id="@+id/height_wheel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="170"
+            android:textColor="@color/dark"
+            android:textSize="18sp"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/height_tv01"/>
+
+        <TextView
+            android:id="@+id/height_tv01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/height_cm"
+            android:textSize="18sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"/>
+
+    </RelativeLayout>
+
+    <View style="@style/height_wheel_style"/>
+
+    <RelativeLayout
+        android:id="@+id/wheel_height_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <com.leoren.liehu.MyView.MyWheel.OtherView.WheelView
+                android:id="@+id/height_select_wheel"
+                android:layout_width="60dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/height_cm"
+                android:textSize="15sp"
+                android:textColor="@color/dark"
+                android:gravity="center_vertical"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <View style="@style/height_wheel_style"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/height_select_ok"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/friends_page_color"
+            android:gravity="center"
+            android:text="@string/suer"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

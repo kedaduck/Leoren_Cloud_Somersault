@@ -30,6 +30,15 @@
             android:textColor="@color/move_btn_unselect"
             android:layout_gravity="center"/>
 
+        <ImageButton
+            android:id="@+id/friend_menu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/menu_icon"
+            android:layout_gravity="right"
+            android:background="@color/friends_page_color"
+            android:layout_marginRight="15dp"/>
+
     </android.support.v7.widget.Toolbar>
 
     <include layout="@layout/acticvity_search"/>

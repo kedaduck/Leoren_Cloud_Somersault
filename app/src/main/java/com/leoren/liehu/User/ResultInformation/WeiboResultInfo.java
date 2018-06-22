@@ -36,7 +36,7 @@ public class WeiboResultInfo {
     //用户头像地址
     private String headBigImgUrl;
 
-    private int getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -44,7 +44,7 @@ public class WeiboResultInfo {
         this.userId = userId;
     }
 
-    private String getScreenName() {
+    public String getScreenName() {
         return screenName;
     }
 
@@ -52,7 +52,7 @@ public class WeiboResultInfo {
         this.screenName = screenName;
     }
 
-    private String getName() {
+    public String getName() {
         return name;
     }
 
@@ -60,7 +60,7 @@ public class WeiboResultInfo {
         this.name = name;
     }
 
-    private int getProvince() {
+    public int getProvince() {
         return province;
     }
 
@@ -68,7 +68,7 @@ public class WeiboResultInfo {
         this.province = province;
     }
 
-    private int getCity() {
+    public int getCity() {
         return city;
     }
 
@@ -76,7 +76,7 @@ public class WeiboResultInfo {
         this.city = city;
     }
 
-    private String getLocation() {
+    public String getLocation() {
         return location;
     }
 
@@ -84,7 +84,7 @@ public class WeiboResultInfo {
         this.location = location;
     }
 
-    private String getHeadImgUrl() {
+    public String getHeadImgUrl() {
         return headImgUrl;
     }
 
@@ -92,7 +92,7 @@ public class WeiboResultInfo {
         this.headImgUrl = headImgUrl;
     }
 
-    private String getGender() {
+    public String getGender() {
         return gender;
     }
 
@@ -100,7 +100,7 @@ public class WeiboResultInfo {
         this.gender = gender;
     }
 
-    private String getHeadBigImgUrl() {
+    public String getHeadBigImgUrl() {
         return headBigImgUrl;
     }
 
@@ -125,7 +125,7 @@ public class WeiboResultInfo {
     }
 
 
-    public static WeiboResultInfo  getWeiboUserInfo(){
+    public static WeiboResultInfo  getInstance(){
         return info;
     }
 

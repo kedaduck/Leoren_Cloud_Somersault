@@ -7,9 +7,90 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainFunctionView.FoodView.Myplan">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/make_body_plan"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is MyplanActivity"/>
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_body_plan"
+            android:textSize="15sp"
+            android:textColor="@color/dark"
+            android:gravity="center"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_body_plan1"
+            android:gravity="center"
+            android:textColor="@color/dark"
+            android:textSize="18sp"/>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp">
+
+            <Button
+                android:id="@+id/real_decline_fat"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_above="@id/add_body_plan"
+                android:layout_toLeftOf="@id/add_body_plan"
+                android:background="@color/food_page_color"
+                android:layout_marginRight="-10dp"
+                android:layout_marginBottom="-10dp"/>
+
+            <Button
+                android:id="@+id/real_add_muscle"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_below="@id/add_body_plan"
+                android:layout_toRightOf="@id/add_body_plan"
+                android:background="@color/food_page_color"
+                android:layout_marginTop="-5dp"
+                android:layout_marginLeft="-5dp"/>
+
+            <Button
+                android:id="@+id/decline_fat_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerInParent="true"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:text="@string/to_add_fat"
+                android:background="@drawable/add_body_button_little"/>
+
+            <Button
+                android:id="@+id/add_muscle_btn"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:text="@string/to_decline_fat"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:background="@drawable/add_body_button_littleqq"/>
+
+            <Button
+                android:id="@+id/add_body_plan"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:text="＋"
+                android:textSize="60sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/add_body_button"/>
+
+
+
+            
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </LinearLayout>

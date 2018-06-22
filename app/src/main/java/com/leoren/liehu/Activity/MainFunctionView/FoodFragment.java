@@ -3,7 +3,6 @@ package com.leoren.liehu.Activity.MainFunctionView;
 import android.app.LocalActivityManager;
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -20,8 +19,7 @@ import com.leoren.liehu.Activity.MainFunctionView.FoodView.Lunch;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Mybody;
 import com.leoren.liehu.Activity.MainFunctionView.FoodView.Myplan;
 import com.leoren.liehu.R;
-import com.leoren.liehu.util.Adapter.FoodPagerAdapter;
-import com.leoren.liehu.util.Adapter.MyFragmentAdapter;
+import com.leoren.liehu.Util.Adapter.MyFragmentAdapter;
 
 import java.util.ArrayList;
 
@@ -77,6 +75,8 @@ public class FoodFragment extends FragmentActivity implements ViewPager.OnPageCh
 
         food_head = findViewById(R.id.food_head);
         food_head.setOnClickListener(this);
+
+
 
         initView();
     }

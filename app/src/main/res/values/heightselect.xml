@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HeightSelectView">
+        <!-- 可见数目 -->
+        <attr name="HeightSelectedViewSeeSize" format="integer"></attr>
+        <!-- 被选择的文字大小和颜色 -->
+        <attr name="HeightSelectedViewTextSize" format="float"></attr>
+        <attr name="HeightSelectedViewTextColor" format="color|reference"></attr>
+
+        <!--未被被选择文字的大小和颜色-->HH
+        <attr name="HeightUnSelectedViewTextSize" format="float"></attr>
+        <attr name="HeightUnSelectedViewTextColor" format="color|reference"></attr>
+
+    </declare-styleable>
+
+
+</resources>

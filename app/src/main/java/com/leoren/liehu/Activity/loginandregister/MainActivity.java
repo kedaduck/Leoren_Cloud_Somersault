@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.PermissionChecker;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -26,8 +25,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.huawei.hms.api.ConnectionResult;
-import com.huawei.hms.api.HuaweiApiAvailability;
 import com.huawei.hms.api.HuaweiApiClient;
 import com.huawei.hms.support.api.client.PendingResult;
 import com.huawei.hms.support.api.client.ResultCallback;
@@ -37,8 +34,6 @@ import com.huawei.hms.support.api.hwid.HuaweiIdStatusCodes;
 import com.huawei.hms.support.api.hwid.SignInHuaweiId;
 import com.huawei.hms.support.api.hwid.SignInResult;
 import com.leoren.liehu.Activity.MainFunction;
-import com.leoren.liehu.Activity.MainFunctionView.ExeciseView.Exercise;
-import com.leoren.liehu.Activity.PersonActivity;
 import com.leoren.liehu.Activity.loginandregister.huawei.BaseActivity;
 import com.leoren.liehu.Activity.loginandregister.xiaomi.CustomizedAuthorizedActivity;
 import com.leoren.liehu.Content.LiehuAgreeMent;
@@ -49,7 +44,10 @@ import com.leoren.liehu.ImpContent.WeiboImpContent;
 import com.leoren.liehu.R;
 import com.leoren.liehu.User.Appuser;
 import com.leoren.liehu.User.ResultInformation.HuaweiResultInfo;
-import com.leoren.liehu.util.JsonParse;
+import com.leoren.liehu.User.ResultInformation.MiResultInfo;
+import com.leoren.liehu.User.ResultInformation.QQResultInfor;
+import com.leoren.liehu.User.ResultInformation.WeiboResultInfo;
+import com.leoren.liehu.Util.JsonParse;
 import com.sina.weibo.sdk.WbSdk;
 import com.sina.weibo.sdk.auth.AccessTokenKeeper;
 import com.sina.weibo.sdk.auth.AuthInfo;
@@ -74,8 +72,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -135,6 +131,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
 
     private TextView no_user ;
     private TextView wrong_pass;
+
+    //网络错误标识
+    private final static int NETWORK_WRONG = 88;
 
 
     //调用QQ接口的一个实例
@@ -244,6 +243,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         this.finish();
     }
 
+    private void startMainFunction(boolean flag){
+        Intent intent = new Intent(MainActivity.this, MainFunction.class);
+        startActivity(intent);
+    }
+
     /**
      * 正常登录   通过软件自己的登录方式注册后的账号信息登录
      */
@@ -253,19 +257,23 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         public void handleMessage(Message msg) {
             switch (msg.what){
                 case NORMAL_LOGIN_SUCC://正常登录
+                    Log.i(TAG, "handleMessage: " + msg.what);
                     startMainFunction();
                     break;
                 case NORMAL_LOGIN_NOUSER://没有此用户
                     no_user.setVisibility(View.VISIBLE);
+                    Log.i(TAG, "handleMessage: " + msg.what);
                     break;
                 case NORMAL_LOGIN_WRONGPASS://用户名错误
                     wrong_pass.setVisibility(View.VISIBLE);
+                    Log.i(TAG, "handleMessage: " + msg.what);
                     break;
                 default:
                     break;
             }
         }
     };
+
     private void normal_login(){
         LOGIN_MODE = Appuser.NORMAL_LOGIN_MODE;
 
@@ -290,6 +298,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                     while ((line = reader.readLine()) != null){
                         sb.append(line);
                     }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Log.i(TAG, "run: " + sb.toString());
+                        }
+                    });
                     int flag = JsonParse.parseNormalLogin(sb.toString())[0];
                     int userid = JsonParse.parseNormalLogin(sb.toString())[1];
                     Message message = new Message();
@@ -311,7 +325,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                 }
             }
         }).start();
-
     }
 
     private void saveLocalFile(int userid){
@@ -360,10 +373,16 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
 
     @Override
     protected void onRestart() {
-        isRestart = true;
-        super.onRestart();
-        Log.i(TAG, "onRestart: ");
-        getAllMiUserInfo();
+        if(LOGIN_MODE == Appuser.XIAOMI_LOGIN_MODE){
+            isRestart = true;
+            super.onRestart();
+            Log.i(TAG, "onRestart: ");
+            getAllMiUserInfo();
+            if(LOGIN_MODE == Appuser.WEIBO_LOGIN_MODE){
+                startMainFunction();
+            }
+        }
+
     }
 
     /**
@@ -397,15 +416,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     private void weibo_login(){
         LOGIN_MODE = Appuser.WEIBO_LOGIN_MODE;
         mSsoHandler.authorize(new SelfWbAuthListener());
+
     }
 
     /**
      * 华为账号登录
      */
+
+
     private void huawei_login(){
         LOGIN_MODE = Appuser.HUAWEI_LOGIN_MODE;
         signIn();
-        Toast.makeText(MainActivity.this, "华为登录", Toast.LENGTH_LONG).show();
     }
 
 
@@ -544,6 +565,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                 }
                 JSONObject object = (JSONObject) o;
                 JsonParse.parseQQUserInfo(object);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+                saveQQInfoToDB();
             }
 
             @Override
@@ -557,7 +589,87 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
             }
         };
 
+    }
 
+
+    private Handler qqInfoHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1://QQ信息写如数据库成功
+                    startMainFunction();
+                    break;
+                default: //写入不成功
+                    showQQLoginWrong();
+                    break;
+            }
+        }
+    };
+
+    public void saveQQInfoToDB(){
+        final QQResultInfor info = QQResultInfor.getQQLoginInstance();
+        final String path = HttpContent.REQUEST_PATH + "qquser_saveqqinfo.action";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = null;
+                BufferedReader reader = null;
+                try{
+                    client = new OkHttpClient();
+                    RequestBody body = new FormBody.Builder()
+                            .add("nickname",info.getQq_nickname())
+                            .add("gender",info.getQq_gender())
+                            .add("qqprovince",info.getQq_province())
+                            .add("qqcity",info.getQq_city())
+                            .add("headiconurl",info.getQq_headicon_url().toString())
+                            .add("headbigiconurl",info.getQq_bigheadicon_url().toString())
+                            .add("year",info.getYear())
+                            .build();
+                    Request request = new Request.Builder()
+                            .post(body)
+                            .url(path)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    InputStream input = response.body().byteStream();
+                    reader = new BufferedReader(new InputStreamReader(input));
+                    String line ;
+                    final StringBuilder sb = new StringBuilder();
+                    while ((line = reader.readLine()) != null){
+                        sb.append(line);
+                    }
+                    int isScuu = parseIsQQLoginSucc(sb.toString());
+                    Message message = qqInfoHandler.obtainMessage();
+                    message.what = isScuu;
+                    qqInfoHandler.sendMessage(message);
+                }catch (Exception e){
+                    Message message = qqInfoHandler.obtainMessage();
+                    message.what = 0;
+                    qqInfoHandler.sendMessage(message);
+                }finally {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
+    }
+
+    private static int parseIsQQLoginSucc(String s) {
+        int isSucc = 0;
+        try{
+            JSONObject obj = new JSONObject(s);
+            isSucc = obj.getInt("isSaveSucc");
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        return isSucc;
+    }
+
+    private void showQQLoginWrong(){
+        Toast.makeText(this,"QQ信息写入数据库失败，请检查网络重新登录！", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -572,7 +684,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
     private void getAllMiUserInfo(){
         getMiUserInfo();
         getMiPhone();
-
     }
 
     private void getMiUserInfo(){
@@ -655,7 +766,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                         JsonParse.parseXiaoMiUserInfo(obj2, obj1);
                         actionDelayed();
                         startMainFunction();
@@ -682,6 +792,44 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
             }
         },3500);
 
+    }
+
+    private void saveXiaoMiinfoToDB(){
+        final MiResultInfo info = MiResultInfo.getInstance();
+        final String path = HttpContent.REQUEST_PATH + "miuser_saveqqinfo.action";
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = null;
+                BufferedReader reader = null;
+                try{
+                    client = new OkHttpClient();
+                    RequestBody body = new FormBody.Builder()
+                            .add("nickname",info.getNickName())
+                            .add("miuserid",info.getMiuserId())
+                            .add("headiconurl",info.getMiliaoIcon().toString())
+                            .add("bigheadurl",info.getMiliaoIconBig().toString())
+                            .add("miphonenum",info.getMiphoneNumber())
+                            .build();
+                    Request request = new Request.Builder()
+                            .url(path)
+                            .post(body)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    InputStream input = response.body().byteStream();
+                    reader = new BufferedReader(new InputStreamReader(input));
+                    StringBuilder sb = new StringBuilder();
+                    String line = null;
+                    while((line = reader.readLine()) != null){
+                        sb.append(line);
+                    }
+
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 
@@ -743,6 +891,72 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         }).start();
     }
 
+    Handler weiboHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case 1:
+                    //成功
+                    break;
+                case NETWORK_WRONG:
+                    //网络错误
+                    break;
+                default:
+                    //失败
+            }
+        }
+    };
+
+    private void saveWeiboUserInfoToDB(){
+        final WeiboResultInfo info = WeiboResultInfo.getInstance();
+        final String path = HttpContent.REQUEST_PATH + "weibouser_saveuserinfo.action";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = null;
+                BufferedReader reader = null;
+                try{
+                    client = new OkHttpClient();
+                    RequestBody body = new FormBody.Builder()
+                            .add("weiboid",String.valueOf(info.getUserId()))
+                            .add("nickname", info.getScreenName())
+                            .add("name", info.getName())
+                            .add("province", String.valueOf(info.getProvince()))
+                            .add("city", String.valueOf(info.getCity()))
+                            .add("location", info.getLocation())
+                            .add("headurl", info.getHeadImgUrl())
+                            .add("bigheadUrl", info.getHeadBigImgUrl())
+                            .add("gender", info.getGender())
+                            .build();
+                    Request request = new Request.Builder()
+                            .post(body)
+                            .url(path)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    InputStream input = response.body().byteStream();
+                    reader = new BufferedReader(new InputStreamReader(input));
+                    String line = null;
+                    StringBuilder sb = new StringBuilder();
+                    while ((line = reader.readLine()) != null){
+                        sb.append(line);
+                    }
+                    Message message = weiboHandler.obtainMessage();
+                    if(sb != null){
+                        JSONObject obj = new JSONObject(sb.toString());
+                        int isSucc = obj.getInt("isSuccess");
+                        message.what = isSucc;
+                        handler.sendMessage(message);
+                    }else {
+                        message.what = NETWORK_WRONG;
+                        handler.sendMessage(message);
+                    }
+                }catch (Exception e){
+                    //网络出错
+                }
+            }
+        }).start();
+    }
+
 
 
 
@@ -784,8 +998,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
         if(!client.isConnected()){
             Log.i(TAG, "Login failed！Reason: Huaweiapiclient not connected！");
             client.connect();
+            Toast.makeText(this, "华为服务未连接！！！", Toast.LENGTH_SHORT).show();
             return;
         }
+        Toast.makeText(this, "华为服务已连接！！！", Toast.LENGTH_SHORT).show();
         PendingResult<SignInResult> signInResult = HuaweiId.HuaweiIdApi.signIn(client);
         signInResult.setResultCallback(new SignInResultCallback());
     }
@@ -813,9 +1029,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener ,
                    String headUrl = account.getPhotoUrl();
                    String userId = account.getUid();
                    int gender = account.getGender();
-                   Toast.makeText(MainActivity.this, "华为登陆"+nickName, Toast.LENGTH_LONG).show();
+                   Toast.makeText(MainActivity.this, "华为登陆666666"+nickName, Toast.LENGTH_LONG).show();
                    HuaweiResultInfo.setHuaweiResultInfo(nickName,headUrl,openId,userId,gender,accessToken);
-
+                   startMainFunction();
                }
            }else {
                //当未授权，回调的result中包含处理该种异常的intent，开发者需要通过getData将对应异常的intent获取出来

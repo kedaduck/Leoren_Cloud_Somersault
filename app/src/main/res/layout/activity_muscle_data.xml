@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainFunctionView.FoodView.BodyData.WeightDataActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/exe_page_color">
+
+        <ImageButton
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/back_icon_white"
+            android:background="@color/exe_page_color"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/muscle_volume"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/weightbackground">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/muscle_newest"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="33.33"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/percent_text"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="8dp"
+            android:src="@drawable/head_qiaoba"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/white"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/muscle_plan"
+            android:textSize="16sp"
+            android:gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/muscle_jiantou"
+                android:layout_width="22dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/white"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="2dp"
+                android:src="@drawable/jiantou_right"/>
+
+            <TextView
+                android:id="@+id/muscle_plan_text"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/not_record"
+                android:gravity="center_vertical"
+                android:layout_toLeftOf="@+id/muscle_jiantou"
+                android:textSize="15sp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View style="@style/height_wheel_style"
+        android:layout_height="10dp"
+        android:background="@color/uvv_light_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/weight_history"
+        android:textSize="16sp"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@color/dark"/>
+
+    <View style="@style/height_wheel_style" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/muscle_history_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="@string/not_more_record"
+        android:background="@color/gray"
+        android:gravity="center_horizontal|center_vertical"
+        android:textColor="@color/white"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@color/exe_page_color"
+        android:text="@string/muscle_record"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+
+</LinearLayout>

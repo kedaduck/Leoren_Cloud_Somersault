@@ -9,25 +9,21 @@ import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.leoren.Send_ConfirmCode;
 import com.leoren.liehu.Helper.HttpContent;
 import com.leoren.liehu.R;
-import com.leoren.liehu.util.JsonParse;
-import com.leoren.liehu.util.RegexUtil;
+import com.leoren.liehu.Util.JsonParse;
+import com.leoren.liehu.Util.RegexUtil;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

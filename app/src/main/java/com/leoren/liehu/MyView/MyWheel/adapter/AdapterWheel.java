@@ -2,28 +2,44 @@ package com.leoren.liehu.MyView.MyWheel.adapter;
 
 import android.content.Context;
 
+import com.leoren.liehu.MyView.MyWheel.OtherView.WheelAdapter;
+
 /**
  * @Author Leoren
  * @Date 2018/5/26 20:10
  */
 public class AdapterWheel extends AbstractWheelTextAdapter {
 
-    //private Wheel
 
-    protected AdapterWheel(Context context) {
+    // Source adapter
+    private WheelAdapter adapter;
+
+    /**
+     * Constructor
+     * @param context the current context
+     * @param adapter the source adapter
+     */
+    public AdapterWheel(Context context, WheelAdapter adapter) {
         super(context);
+
+        this.adapter = adapter;
     }
 
-    public AdapterWheel(Context context, int itemResource) {
-        super(context, itemResource);
+    /**
+     * Gets original adapter
+     * @return the original adapter
+     */
+    public WheelAdapter getAdapter() {
+        return adapter;
     }
 
-    public AdapterWheel(Context context, int itemResource, int itemTextResource, int currentIndex, int maxSize, int minSize) {
-        super(context, itemResource, itemTextResource, currentIndex, maxSize, minSize);
+    @Override
+    public int getItemsCount() {
+        return adapter.getItemsCount();
     }
 
     @Override
     protected CharSequence getItemText(int index) {
-        return null;
+        return adapter.getItem(index);
     }
 }

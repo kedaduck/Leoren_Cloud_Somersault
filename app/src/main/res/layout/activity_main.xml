@@ -9,9 +9,13 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="@string/login_text"
-        app:titleMarginStart="165dp"
         android:background="#FFF">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login_text"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"/>
 
     </android.support.v7.widget.Toolbar>
 
@@ -147,12 +151,15 @@
                 android:layout_marginRight="20dp"
                 android:src="@drawable/weibo_login_icon" />
 
+
             <ImageView
                 android:id="@+id/huawei_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/huawei_icon"
                 android:layout_marginLeft="20dp"/>
+
+
 
             <ImageView
                 android:id="@+id/mi_login"
@@ -170,38 +177,38 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text="@string/login_mode_info"
+            android:textSize="12sp"
             android:layout_gravity="center_vertical"
             android:gravity="center_horizontal"/>
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_gravity="center|bottom"
-        android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/read_agreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginStart="40dp"
-            android:text="@string/use_agree" />
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
+            android:text="@string/use_agree"
+            android:textSize="12sp"/>
 
         <TextView
             android:id="@+id/agreement"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/read_agreement"
-            android:layout_toEndOf="@+id/read_agreement"
             android:onClick="agree_LiehuAgreement"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="8dp"
             android:text="@string/liehu_agreement"
             android:textColor="#00f" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 

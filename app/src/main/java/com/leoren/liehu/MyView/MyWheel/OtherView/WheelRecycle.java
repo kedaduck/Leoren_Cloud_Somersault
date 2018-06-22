@@ -75,7 +75,7 @@ public class WheelRecycle {
     }
 
     private void recycleView(View view, int index){
-        int count = wheel.getViewAdapter().getItemCount();
+        int count = wheel.getViewAdapter().getItemsCount();
 
         if((index < 0 || index >= count) && !wheel.isCyclic()){
             emptyItems = addView(view, emptyItems);

@@ -60,6 +60,29 @@
     <string name="muscle_volume">肌肉量</string>
     <string name="record_body_change">记录你的身体变化趋势</string>
     <string name="not_record">未记录</string>
+    <string name="select_height">选择身高</string>
+    <string name="height_cm">CM</string>
+    <string name="weight_kg">KG</string>
+    <string name="percent_text">%</string>
+    <string name="weight_newest">最新体重</string>
+    <string name="weight_plan">目标体重</string>
+    <string name="not_more_record">没有更多纪录了</string>
+    <string name="recode_weight">纪录体重</string>
+    <string name="weight_history">历史纪录</string>
+    <string name="bust_newest">最新胸围</string>
+    <string name="bust_plan">目标胸围</string>
+    <string name="bust_record">记录胸围</string>
+    <string name="muscle_newest">最新肌肉量</string>
+    <string name="muscle_plan">目标肌肉量</string>
+    <string name="muscle_record">记录肌肉量</string>
+    <string name="fatrate_newest">最新体脂率</string>
+    <string name="fatrate_plan">目标体脂率</string>
+    <string name="fatrate_record">记录体脂率</string>
+
+
+    <!-- 形体 -->
+    <string name="bodyShape">形体</string>
+    <string name="take_body_photo">拍照</string>
 
 
     <string name="myplan">计划</string>
@@ -68,6 +91,31 @@
     <string name="dinner">晚餐</string>
     <string name="choose_food_kind">选择  ></string>
     <string name="choose_food">选择食物</string>
+
+    <!-- 计划模块所用String -->
+    <string name="no_body_plan">您暂无任何计划</string>
+    <string name="no_body_plan1">赶快制定一个吧！</string>
+    <string name="to_decline_fat">减脂</string>
+    <string name="to_add_fat">增肌</string>
+    <string name="add_muscle_plan_step1">增肌计划(1/3)</string>
+    <string name="add_muscle_plan_step2">增肌计划(2/3)</string>
+    <string name="add_muscle_plan_step3">增肌计划(3/3)</string>
+    <string name="not_muscle_record">还未有肌肉量的记录</string>
+    <string name="now_to_add">+马上添加</string>
+    <string name="now_muscle_content">目前肌肉量是</string>
+    <string name="plan_muscle">目标肌肉量是</string>
+    <string name="plan_muscle_time">达到目标时间</string>
+    <string name="decline_fat_plan_step1">减脂计划(1/3)</string>
+    <string name="decline_fat_plan_step2">减脂计划(2/3)</string>
+    <string name="decline_fat_plan_step3">减脂计划(3/3)</string>
+    <string name="not_fat_record">还未有体脂率的记录</string>
+    <string name="plan_fat">目标体脂率是</string>
+    <string name="plan_fat_time">达到目标时间</string>
+    <string name="now_fat_content">现在体脂率为</string>
+    <string name="next_step">下一步</string>
+    <string name="alter">修改</string>
+    <string name="complete">完成</string>
+    <string name="select_plan_muscle">选择目标肌肉量</string>
 
     <!-- ======================================================================================================-->
 

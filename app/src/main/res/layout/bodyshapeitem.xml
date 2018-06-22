@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/bodyshape_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <View
+        android:layout_width="5dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:background="@color/uvv_gray"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bodyshape_staricon"/>
+
+        <TextView
+            android:id="@+id/body_photo_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018年6月20日"
+            android:textSize="15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/uvv_gray"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@color/uvv_gray"
+            android:layout_marginLeft="20dp"/>
+
+        <ImageView
+            android:id="@+id/body_shape_phote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/bodyshap_icon"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

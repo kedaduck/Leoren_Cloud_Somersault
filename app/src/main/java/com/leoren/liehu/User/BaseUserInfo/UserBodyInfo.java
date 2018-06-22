@@ -1,9 +1,7 @@
 package com.leoren.liehu.User.BaseUserInfo;
 
-import com.leoren.liehu.util.MyDate;
+import com.leoren.liehu.Util.MyDate;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 
 /**

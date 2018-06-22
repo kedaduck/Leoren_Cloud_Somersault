@@ -16,8 +16,10 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/login"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -102,9 +104,22 @@
         <activity android:name=".Activity.MainFunctionView.HappyView.LittleEasy" />
         <activity
             android:name=".Activity.MainFunctionView.HappyView.NormalVideo.PlayNormalVideo"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-        </activity>
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.BodyShapeChangeActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.HeightDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.WeightDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.BustDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.WaistDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.HipDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.FatrateDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.BodyData.MuscleDataActivity" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.DeclineFatActivity1" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.AddMuscleActivity1" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.AddMuscleActivity2" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.AddMuscleActivity3" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.DeclineFatActivity2" />
+        <activity android:name=".Activity.MainFunctionView.FoodView.PlanActivity.DeclineFatActivity3"></activity>
     </application>
 
 </manifest>

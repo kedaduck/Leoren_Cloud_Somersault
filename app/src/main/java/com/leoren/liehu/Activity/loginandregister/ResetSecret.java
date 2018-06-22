@@ -14,7 +14,7 @@ import android.widget.Toast;
 import com.leoren.liehu.Activity.MainFunction;
 import com.leoren.liehu.Helper.HttpContent;
 import com.leoren.liehu.R;
-import com.leoren.liehu.util.JsonParse;
+import com.leoren.liehu.Util.JsonParse;
 
 import java.io.BufferedReader;
 import java.io.IOException;

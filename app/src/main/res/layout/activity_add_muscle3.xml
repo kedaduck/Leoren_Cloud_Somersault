@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.MainFunctionView.FoodView.PlanActivity.AddMuscleActivity1">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/add_muscle_step_bar">
+
+        <ImageButton
+            android:id="@+id/from_add_muscle3_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/back_icon_white"
+            android:background="@color/add_muscle_step_bar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_muscle_plan_step3"
+            android:textColor="@color/light_dark"
+            android:textSize="18sp"
+            android:layout_marginLeft="35dp"/>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/not_have_muscle_record"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/plan_muscle_time"
+            android:textSize="17sp"
+            android:textColor="@color/uvv_gray"
+            android:gravity="center"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="肌肉量目标完成时间选择滚轮"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="完成建议"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/suer"
+            android:background="@color/add_muscle_step_bar"
+            android:layout_gravity="center"
+            android:textColor="@color/dark"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

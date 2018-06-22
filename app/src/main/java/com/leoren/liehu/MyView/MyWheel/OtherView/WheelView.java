@@ -341,11 +341,11 @@ public class WheelView extends View {
      *            the animation flag
      */
     public void setCurrentItem(int index, boolean animated) {
-        if (viewAdapter == null || viewAdapter.getItemCount() == 0) {
+        if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
             return; // throw?
         }
 
-        int itemCount = viewAdapter.getItemCount();
+        int itemCount = viewAdapter.getItemsCount();
         if (index < 0 || index >= itemCount) {
             if (isCyclic) {
                 while (index < 0) {
@@ -570,7 +570,7 @@ public class WheelView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if (viewAdapter != null && viewAdapter.getItemCount() > 0) {
+        if (viewAdapter != null && viewAdapter.getItemsCount() > 0) {
             updateView();
 
             drawItems(canvas);
@@ -670,7 +670,7 @@ public class WheelView extends View {
         int count = scrollingOffset / itemHeight;
 
         int pos = currentItem - count;
-        int itemCount = viewAdapter.getItemCount();
+        int itemCount = viewAdapter.getItemsCount();
 
         int fixPos = scrollingOffset % itemHeight;
         if (Math.abs(fixPos) <= itemHeight / 2) {
@@ -880,8 +880,8 @@ public class WheelView extends View {
      * @return true if item index is not out of bounds or the wheel is cyclic
      */
     private boolean isValidItemIndex(int index) {
-        return viewAdapter != null && viewAdapter.getItemCount() > 0
-                && (isCyclic || index >= 0 && index < viewAdapter.getItemCount());
+        return viewAdapter != null && viewAdapter.getItemsCount() > 0
+                && (isCyclic || index >= 0 && index < viewAdapter.getItemsCount());
     }
 
     /**
@@ -892,10 +892,10 @@ public class WheelView extends View {
      * @return item view or empty view if index is out of bounds
      */
     private View getItemView(int index) {
-        if (viewAdapter == null || viewAdapter.getItemCount() == 0) {
+        if (viewAdapter == null || viewAdapter.getItemsCount() == 0) {
             return null;
         }
-        int count = viewAdapter.getItemCount();
+        int count = viewAdapter.getItemsCount();
         if (!isValidItemIndex(index)) {
             return viewAdapter.getEmptyItem(recycle.getEmptyItem(), itemsLayout);
         } else {

@@ -23,6 +23,11 @@
     <color name="text_10">#333333</color>
     <color name="text_11">#999999</color>
     <color name="gray_bg">#f8f8f8</color>
+    <color name="blue_text">#0c91f7</color>
+    <color name="line_stroke">#cac7c7</color>
+    <color name="gray">#CFCFCF</color>
+    <color name="add_muscle_step_bar">#EEE6A8</color>
+    <color name="light_dark">#292929</color>
 
     <color name="uvv_gray">#969696</color>
     <color name="uvv_black">#ff000000</color>
